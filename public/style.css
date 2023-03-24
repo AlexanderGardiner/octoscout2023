@@ -1,0 +1,55 @@
+html {
+  height: 100%;
+  width: 100%;
+  background-color: #0E1525;
+}
+
+p {
+  margin:auto;
+  font-size: 10px;
+  margin:0px;
+  padding:0px;
+  padding-top:8px;
+  margin-bottom: 2px;
+  font-family: Verdana;
+  font-weight: bold;
+  color: #ebebeb;
+}
+
+button {
+  margin:auto;
+  margin-right: 5px;
+  margin-left: 5px;
+  border-radius: 4px;
+  padding: 2px 4px;
+  text-decoration: none;
+  border: none;
+  color: black;
+  background-color: #f4f4f4;
+  font-family: Verdana;
+  
+}
+
+#input {
+  text-align:center;
+  margin: auto;
+  height: 100%;
+  padding: 10px;
+  
+  background-color: #0E1525;;
+}
+
+input {
+  background-color: #ebebeb;
+  border: none;
+  color: #231651;
+}
+
+select {
+  color: #0E1525;
+}
+
+input[type=checkbox] {
+  outline: 2px solid #150fff;
+}
+
