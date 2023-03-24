@@ -105,12 +105,15 @@ app.post('/uploadMatch', (req, res) => {
 app.post('/uploadGridMatch', (req, res) => {
   uploadedData = req.body.data;
 
+
   // Write data to grid csv
   data = readFromGridCSV();
   data.push(uploadedData[1]);
   writeToGridCSV(convert2DArrayToCSV(data));
   data.pop();
 
+
+  // Format data and write to points csv
   uploadedDataAsPoints = [];
   i = 0;
   uploadedDataI = 0;
@@ -136,33 +139,24 @@ app.post('/uploadGridMatch', (req, res) => {
         for (let k = 0; k < gridFields[i].categories[j].length; k++) {
           if (uploadedData[1][uploadedDataI]) {
             categoriesPointsSums[gridFields[i].categories[j][k]] += gridFields[i].grid[j][k];
-            
           }
           uploadedDataI++;
-
-
-
         }
       }
 
       for (let j = 0; j < gridFields[i].categoriesNames.length; j++) {
         uploadedDataAsPoints.push(categoriesPointsSums[j]);
-
       }
 
     }
     i++;
-    
-    
   }
 
-  ogPoints = readFromPointsCSV();
-  ogPoints.push(uploadedDataAsPoints)
-  writeToPointsCSV(convert2DArrayToCSV(ogPoints));
 
-
-
-
+  // Format data and write to points csv
+  pointsCSV = readFromPointsCSV();
+  pointsCSV.push(uploadedDataAsPoints)
+  writeToPointsCSV(convert2DArrayToCSV(pointsCSV));
 
   uploadedDataAsCount = [];
   i = 0;
@@ -178,36 +172,28 @@ app.post('/uploadGridMatch', (req, res) => {
     } else if (gridFields[i].type == "choice") {
       uploadedDataAsCount.push(uploadedData[1][uploadedDataI]);
       uploadedDataI++;
-
     } else if (gridFields[i].type == "checkbox grid") {
       categoriesCountsSums = Array(gridFields[i].categoriesNames.length).fill(0);
       for (let j = 0; j < gridFields[i].categories.length; j++) {
         for (let k = 0; k < gridFields[i].categories[j].length; k++) {
           if (uploadedData[1][uploadedDataI]) {
             categoriesCountsSums[gridFields[i].categories[j][k]] += 1;
-            
           }
           uploadedDataI++;
-
-
-
         }
       }
 
       for (let j = 0; j < gridFields[i].categoriesNames.length; j++) {
         uploadedDataAsCount.push(categoriesCountsSums[j]);
-
       }
 
     }
     i++;
-    
-    
   }
 
-  ogCount = readFromCountCSV();
-  ogCount.push(uploadedDataAsCount)
-  writeToCountCSV(convert2DArrayToCSV(ogCount));
+  coutCSV = readFromCountCSV();
+  coutCSV.push(uploadedDataAsCount)
+  writeToCountCSV(convert2DArrayToCSV(coutCSV));
 
   console.log("Match Uploaded");
   res.sendStatus(200);
