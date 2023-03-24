@@ -27,6 +27,9 @@ fields = [{ name: "Team Number", type: "text" },
 { name: "Cone Mid Teleop", type: "increment", points: 3 },
 { name: "Cone Low Teleop", type: "increment", points: 2 },
 { name: "Cube High Teleop", type: "increment", points: 5 },
+
+
+
 { name: "Cube Mid Teleop", type: "increment", points: 3 },
 { name: "Cube Low Teleop", type: "increment", points: 2 },
 { name: "Endgame Teleop", type: "choice", choices: ["None", "Park", "Docked", "Engaged"], points: [0, 2, 6, 10] },
@@ -68,11 +71,13 @@ gridFields = [
 
 app.post('/uploadMatch', (req, res) => {
   uploadedData = req.body.data;
+
+  // Write data to count csv
   data = readFromCountCSV();
   data.push(uploadedData[1]);
   writeToCountCSV(convert2DArrayToCSV(data))
 
-  // Points
+  // Format data and write to points csv
   pointsData = [];
   for (i = 0; i < uploadedData[1].length; i++) {
     if (fields[i].type == "text") {
@@ -85,18 +90,22 @@ app.post('/uploadMatch', (req, res) => {
           pointsData.push(fields[i].points[j]);
         }
       }
-      
     }
   }
+
   pointsCSV = readFromPointsCSV();
   pointsCSV.push(pointsData);
   writeToPointsCSV(convert2DArrayToCSV(pointsCSV));
+
+
   console.log("Match Uploaded");
   res.sendStatus(200);
 });
 
 app.post('/uploadGridMatch', (req, res) => {
   uploadedData = req.body.data;
+
+  // Write data to grid csv
   data = readFromGridCSV();
   data.push(uploadedData[1]);
   writeToGridCSV(convert2DArrayToCSV(data));
@@ -204,6 +213,7 @@ app.post('/uploadGridMatch', (req, res) => {
   res.sendStatus(200);
 });
 
+// Requests for scouting format
 app.get('/getFields', (req, res) => {
   res.json(fields);
 });
@@ -212,11 +222,13 @@ app.get('/getGridFields', (req, res) => {
   res.json(gridFields);
 });
 
+
 app.listen(80, () => {
   console.log('App is listening on port 80');
 });
 
 
+// Read csv and format functions
 function readFromCountCSV() {
   results = [];
   data = fs.readFileSync('./public/dataAsCount.csv', 'utf8');
@@ -229,7 +241,6 @@ function readFromCountCSV() {
   }
 
   return results;
-
 }
 
 function readFromPointsCSV() {
@@ -244,7 +255,6 @@ function readFromPointsCSV() {
   }
 
   return results;
-
 }
 
 function readFromGridCSV() {
@@ -259,40 +269,9 @@ function readFromGridCSV() {
   }
 
   return results;
-
 }
 
-
-function readFromCSV() {
-  results = [];
-  data = fs.readFileSync('./public/data.csv', 'utf8');
-
-  const rows = data.trim().split('\n');
-
-  for (const row of rows) {
-    const values = row.split(',');
-    results.push(values);
-  }
-
-  return results;
-
-}
-function readFromCSVWithoutHeaders() {
-  results = [];
-  data = fs.readFileSync('./public/dataWithoutHeaders.csv', 'utf8');
-
-  const rows = data.trim().split('\n');
-  rows.shift();
-  for (const row of rows) {
-    const values = row.split(',');
-    results.push(values);
-  }
-
-  return results;
-
-}
-
-
+// Write to csv functions
 function writeToCountCSV(csv) {
   fs.writeFileSync('./public/dataAsCount.csv', csv, 'utf8');
 }
@@ -306,18 +285,6 @@ function writeToGridCSV(csv) {
 }
 
 
-
-
-function writeToCSVWithoutHeaders(csv) {
-  fs.writeFileSync('./public/dataWithoutHeaders.csv', csv, 'utf8');
-}
-
-function writeToCSV(csv) {
-  fs.writeFileSync('./public/data.csv', csv, 'utf8');
-}
-
-
-
 function convert2DArrayToCSV(data) {
   return (data.map((item) => {
     var row = item;
@@ -326,7 +293,7 @@ function convert2DArrayToCSV(data) {
 }
 
 
-
+// Write headers to points csv if empty
 data = readFromPointsCSV();
 if (data == 0) {
   headers = [[]];
@@ -343,6 +310,7 @@ if (data == 0) {
   writeToPointsCSV(convert2DArrayToCSV(headers))
 }
 
+// Write headers to count csv if empty
 data = readFromCountCSV();
 if (data == 0) {
   headers = [[]];
@@ -359,7 +327,7 @@ if (data == 0) {
   writeToCountCSV(convert2DArrayToCSV(headers))
 }
 
-
+// Write headers to grid csv if empty
 data = readFromGridCSV();
 if (data == 0) {
   headers = [[]];

@@ -1,13 +1,14 @@
 fields = [];
 elementsNames = [];
 elements = [];
+
 function initalizeFields() {
   div = document.getElementById("input");
   for (let i = 0; i < fields.length; i++) {
     var name = document.createElement("p");
     name.innerHTML = fields[i].name;
-    
     div.appendChild(name);
+
     if (fields[i].type == "text") {
       elementsNames.push(fields[i].name);
       elements.push(document.createElement("input"));
@@ -15,7 +16,7 @@ function initalizeFields() {
       elements[i].id = fields[i].name;
       div.appendChild(elements[i]);
 
-    } if (fields[i].type == "increment") {
+    } else if (fields[i].type == "increment") {
       elementsNames.push(fields[i].name);
       elements.push(document.createElement("input"));
       elements[i].type = "number";
@@ -32,10 +33,10 @@ function initalizeFields() {
       incrementButton.innerHTML = "+";
       div.appendChild(incrementButton);
       incrementButton.setAttribute("onclick", 'incrementInput("' + fields[i].name + '")');
+
     } else if (fields[i].type == "choice") {
       elementsNames.push(fields[i].name);
       elements.push(document.createElement("select"));
-      elements[i].type = "checkbox";
       elements[i].id = fields[i].name;
       div.appendChild(elements[i]);
 
@@ -45,10 +46,12 @@ function initalizeFields() {
         option.text = fields[i].choices[j];
         elements[i].appendChild(option)
       }
+
     } else if (fields[i].type == "checkbox grid") {
       elements.push([]);
       for (let j=0; j<fields[i].grid.length;j++) {
         elements[i].push([]);
+
         for (let k=0; k<fields[i].grid[j].length;k++) {
           elementsNames.push(fields[i].name +": " +fields[i].rowNames[j]+" "+k);
           elements[i][j].push(document.createElement("input"));
@@ -56,20 +59,15 @@ function initalizeFields() {
           elements[i][j][k].style.outline = "2px solid "+fields[i].colors[j][k];
           div.appendChild(elements[i][j][k]);
         }
-        div.appendChild(document.createElement("br"));
-      }
-      
 
-    
+        div.appendChild(document.createElement("br"));
+
+      }
     } 
 
     div.appendChild(document.createElement("br"));
+  }
 
-  }
-  
-  for (let i = 0; i < fields.length; i++) {
-    elementsNames.push(fields[i].name+" Points");
-  }
   var exportButton = document.createElement("button");
   exportButton.innerHTML = "Export as CSV";
   exportButton.setAttribute("onclick", "exportFields()");
@@ -112,10 +110,8 @@ function incrementInput(inputID) {
 function decrementInput(inputID) {
   document.getElementById(inputID).value = parseInt(document.getElementById(inputID).value) - 1;
 }
-getFields();
 
-
-function getFields() {
+function getFieldsAndInitialize() {
   fetch("/getGridFields", {
     method: "GET",
     headers: {
@@ -127,6 +123,7 @@ function getFields() {
     initalizeFields();
   });
 }
+
 function exportFields() {
   elementsValues = [];
   elementsValues = getElementsValues();
@@ -143,7 +140,6 @@ function getElementsValues() {
       elementsValues.push(elements[i].value);
     } else if (fields[i].type == "choice") {
       elementsValues.push(elements[i].value);
-      
     } else if (fields[i].type == "checkbox grid") {
       for (let j=0; j<fields[i].grid.length;j++) {
         for (let k=0; k<fields[i].grid[j].length;k++) {
@@ -153,8 +149,6 @@ function getElementsValues() {
     } 
   }
 
-
-  
   return elementsValues;
 }
 
@@ -206,3 +200,5 @@ function getScoutingDataAsPoints() {
 function getScoutingDataAsCount() {
   window.location.href = "/dataAsCount.csv";
 }
+
+getFieldsAndInitialize();

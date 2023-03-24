@@ -1,6 +1,7 @@
 fields = [];
 elementsNames = [];
 elements = [];
+
 function initalizeFields() {
   div = document.getElementById("input");
   for (let i = 0; i < fields.length; i++) {
@@ -8,6 +9,7 @@ function initalizeFields() {
     name.innerHTML = fields[i].name;
     elementsNames.push(fields[i].name);
     div.appendChild(name);
+
     if (fields[i].type == "text") {
       elements.push(document.createElement("input"));
       elements[i].type = "text";
@@ -30,9 +32,9 @@ function initalizeFields() {
       incrementButton.innerHTML = "+";
       div.appendChild(incrementButton);
       incrementButton.setAttribute("onclick", 'incrementInput("' + fields[i].name + '")');
+
     } else if (fields[i].type == "choice") {
       elements.push(document.createElement("select"));
-      elements[i].type = "checkbox";
       elements[i].id = fields[i].name;
       div.appendChild(elements[i]);
 
@@ -47,10 +49,7 @@ function initalizeFields() {
     div.appendChild(document.createElement("br"));
 
   }
-  
-  for (let i = 0; i < fields.length; i++) {
-    elementsNames.push(fields[i].name+" Points");
-  }
+
   var exportButton = document.createElement("button");
   exportButton.innerHTML = "Export as CSV";
   exportButton.setAttribute("onclick", "exportFields()");
@@ -93,10 +92,8 @@ function incrementInput(inputID) {
 function decrementInput(inputID) {
   document.getElementById(inputID).value = parseInt(document.getElementById(inputID).value) - 1;
 }
-getFields();
 
-
-function getFields() {
+function getFieldsAndInitialize() {
   fetch("/getFields", {
     method: "GET",
     headers: {
@@ -108,6 +105,7 @@ function getFields() {
     initalizeFields();
   });
 }
+
 function exportFields() {
   elementsValues = [];
   elementsValues = getElementsValues();
@@ -116,9 +114,7 @@ function exportFields() {
 }
 
 function getElementsValues() {
-  
   elementsValues = [];
-  // Numbers
   for (i = 0; i < elements.length; i++) {
     if (fields[i].type == "text") {
       elementsValues.push(elements[i].value);
@@ -126,11 +122,9 @@ function getElementsValues() {
       elementsValues.push(parseInt(elements[i].value));
     } else if (fields[i].type == "choice") {
       elementsValues.push(elements[i].value);
-      
     }
   }
 
-  
   return elementsValues;
 }
 
@@ -166,7 +160,6 @@ function uploadMatch() {
       alert("Upload Failed");
     }
   })
-
 }
 
 function clearData() {
@@ -182,3 +175,5 @@ function getScoutingDataAsPoints() {
 function getScoutingDataAsCount() {
   window.location.href = "/dataAsCount.csv";
 }
+
+getFieldsAndInitialize();
