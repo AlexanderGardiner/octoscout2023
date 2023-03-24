@@ -63,20 +63,27 @@ function initalizeFields() {
   clearButton.innerHTML = "Clear Fields";
   clearButton.setAttribute("onclick", "clearData()");
 
-  var getScoutingDataButton = document.createElement("button");
-  getScoutingDataButton.innerHTML = "Get Scouting Data";
-  getScoutingDataButton.setAttribute("onclick", "getScoutingData()");
+  var getScoutingDataButtonPoints = document.createElement("button");
+  getScoutingDataButtonPoints.innerHTML = "Get Scouting Data (Points)";
+  getScoutingDataButtonPoints.setAttribute("onclick", "getScoutingDataAsPoints()");
+
+  var getScoutingDataButtonCount = document.createElement("button");
+  getScoutingDataButtonCount.innerHTML = "Get Scouting Data (Count)";
+  getScoutingDataButtonCount.setAttribute("onclick", "getScoutingDataAsCount()");
+
 
   uploadButton.style["margin-top"] = "8px";
   exportButton.style["margin-top"] = "8px";
   clearButton.style["margin-top"] = "8px";
-  getScoutingDataButton.style["margin-top"] = "8px";
+  getScoutingDataButtonPoints.style["margin-top"] = "8px";
+  getScoutingDataButtonCount.style["margin-top"] = "8px";
 
   div.appendChild(exportButton);
   div.appendChild(uploadButton);
-  div.appendChild(document.createElement("br"));
   div.appendChild(clearButton);
-  div.appendChild(getScoutingDataButton);
+  div.appendChild(document.createElement("br"));
+  div.appendChild(getScoutingDataButtonPoints);
+  div.appendChild(getScoutingDataButtonCount);
 }
 
 function incrementInput(inputID) {
@@ -109,6 +116,7 @@ function exportFields() {
 }
 
 function getElementsValues() {
+  
   elementsValues = [];
   // Numbers
   for (i = 0; i < elements.length; i++) {
@@ -122,21 +130,7 @@ function getElementsValues() {
     }
   }
 
-  // Points
-  for (i = 0; i < elements.length; i++) {
-    if (fields[i].type == "text") {
-      elementsValues.push(elements[i].value);
-    } else if (fields[i].type == "increment") {
-      elementsValues.push(parseInt(elements[i].value) * fields[i].points);
-    } else if (fields[i].type == "choice") {
-      for (let j = 0; j < fields[i].choices.length; j++) {
-        if (fields[i].choices[j] == elements[i].value) {
-          elementsValues.push(fields[i].points[j]);
-        }
-      }
-      
-    }
-  }
+  
   return elementsValues;
 }
 
@@ -166,6 +160,7 @@ function uploadMatch() {
     body: JSON.stringify(jsonData),
   }).then(response => {
     if (response.status == 200) {
+      console.log("Match Uploaded");
       alert("Match Uploaded");
     } else {
       alert("Upload Failed");
@@ -180,6 +175,10 @@ function clearData() {
   initalizeFields();
 }
 
-function getScoutingData() {
-  window.location.href = "/data.csv";
+function getScoutingDataAsPoints() {
+  window.location.href = "/dataAsPoints.csv";
+}
+
+function getScoutingDataAsCount() {
+  window.location.href = "/dataAsCount.csv";
 }

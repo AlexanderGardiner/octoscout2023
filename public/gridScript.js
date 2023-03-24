@@ -82,20 +82,27 @@ function initalizeFields() {
   clearButton.innerHTML = "Clear Fields";
   clearButton.setAttribute("onclick", "clearData()");
 
-  var getScoutingDataButton = document.createElement("button");
-  getScoutingDataButton.innerHTML = "Get Scouting Data";
-  getScoutingDataButton.setAttribute("onclick", "getScoutingData()");
+  var getScoutingDataButtonPoints = document.createElement("button");
+  getScoutingDataButtonPoints.innerHTML = "Get Scouting Data (Points)";
+  getScoutingDataButtonPoints.setAttribute("onclick", "getScoutingDataAsPoints()");
+
+  var getScoutingDataButtonCount = document.createElement("button");
+  getScoutingDataButtonCount.innerHTML = "Get Scouting Data (Count)";
+  getScoutingDataButtonCount.setAttribute("onclick", "getScoutingDataAsCount()");
+
 
   uploadButton.style["margin-top"] = "8px";
   exportButton.style["margin-top"] = "8px";
   clearButton.style["margin-top"] = "8px";
-  getScoutingDataButton.style["margin-top"] = "8px";
+  getScoutingDataButtonPoints.style["margin-top"] = "8px";
+  getScoutingDataButtonCount.style["margin-top"] = "8px";
 
   div.appendChild(exportButton);
   div.appendChild(uploadButton);
-  div.appendChild(document.createElement("br"));
   div.appendChild(clearButton);
-  div.appendChild(getScoutingDataButton);
+  div.appendChild(document.createElement("br"));
+  div.appendChild(getScoutingDataButtonPoints);
+  div.appendChild(getScoutingDataButtonCount);
 }
 
 function incrementInput(inputID) {
@@ -167,7 +174,6 @@ function downloadCSV(rows) {
 function uploadMatch() {
   elementsValues = [];
   elementsValues = getElementsValues();
-  console.log(elementsValues)
   csvData = [elementsNames, elementsValues];
   jsonData = { data: csvData };
   fetch("/uploadGridMatch", {
@@ -178,6 +184,7 @@ function uploadMatch() {
     body: JSON.stringify(jsonData),
   }).then(response => {
     if (response.status == 200) {
+      console.log("Match Uploaded");
       alert("Match Uploaded");
     } else {
       alert("Upload Failed");
@@ -192,6 +199,10 @@ function clearData() {
   initalizeFields();
 }
 
-function getScoutingData() {
-  window.location.href = "/data.csv";
+function getScoutingDataAsPoints() {
+  window.location.href = "/dataAsPoints.csv";
+}
+
+function getScoutingDataAsCount() {
+  window.location.href = "/dataAsCount.csv";
 }

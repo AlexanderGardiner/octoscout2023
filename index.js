@@ -20,7 +20,7 @@ fields = [{ name: "Team Number", type: "text" },
 { name: "Cube Mid Auto", type: "increment", points: 4 },
 { name: "Cube Low Auto", type: "increment", points: 3 },
 { name: "Mobility Auto", type: "choice", choices: ["None", "Attempted Mobility", "Mobility"], points: [0, 0, 3] },
-{ name: "Balance Auto", type: "choice", choices: ["None", "Attempted", "Docked", "Engaged"], points: [0, 0, 0, 8, 12] },
+{ name: "Balance Auto", type: "choice", choices: ["None", "Attempted", "Docked", "Engaged"], points: [0, 0, 8, 12] },
 { name: "Cones Collected", type: "increment", points: 1 },
 { name: "Cubes Collected", type: "increment", points: 1 },
 { name: "Cone High Teleop", type: "increment", points: 5 },
@@ -49,7 +49,7 @@ gridFields = [
   categoriesNames: ["Cone High Auto","Cone Mid Auto", "Cone Low Auto", "Cube High Auto", "Cube Mid Auto", "Cube Low Auto"]
 },
 { name: "Mobility Auto", type: "choice", choices: ["None", "Attempted Mobility", "Mobility"], points: [0, 0, 3] },
-{ name: "Balance Auto", type: "choice", choices: ["None", "Attempted", "Docked", "Engaged"], points: [0, 0, 0, 8, 12] },
+{ name: "Balance Auto", type: "choice", choices: ["None", "Attempted", "Docked", "Engaged"], points: [0, 0, 8, 12] },
 { name: "Cones Collected", type: "increment", points: 1 },
 { name: "Cubes Collected", type: "increment", points: 1 },
 {
@@ -68,10 +68,30 @@ gridFields = [
 
 app.post('/uploadMatch', (req, res) => {
   uploadedData = req.body.data;
-  data = readFromCSV();
+  data = readFromCountCSV();
   data.push(uploadedData[1]);
-  writeToCSV(convert2DArrayToCSV(data))
+  writeToCountCSV(convert2DArrayToCSV(data))
 
+  // Points
+  pointsData = [];
+  for (i = 0; i < uploadedData[1].length; i++) {
+    if (fields[i].type == "text") {
+      pointsData.push(uploadedData[1][i]);
+    } else if (fields[i].type == "increment") {
+      pointsData.push(parseInt(uploadedData[1][i]) * fields[i].points);
+    } else if (fields[i].type == "choice") {
+      for (let j = 0; j < fields[i].choices.length; j++) {
+        if (fields[i].choices[j] == uploadedData[1][i]) {
+          pointsData.push(fields[i].points[j]);
+        }
+      }
+      
+    }
+  }
+  pointsCSV = readFromPointsCSV();
+  pointsCSV.push(pointsData);
+  writeToPointsCSV(convert2DArrayToCSV(pointsCSV));
+  console.log("Match Uploaded");
   res.sendStatus(200);
 });
 
@@ -140,9 +160,6 @@ app.post('/uploadGridMatch', (req, res) => {
   uploadedDataI = 0;
 
   while (i < gridFields.length) {
-    console.log("I: "+i);
-    console.log("UploadedI"+uploadedDataI);
-    console.log(uploadedDataAsCount)
     if (gridFields[i].type == "text") {
       uploadedDataAsCount.push(uploadedData[1][uploadedDataI]);
       uploadedDataI++;
@@ -183,6 +200,7 @@ app.post('/uploadGridMatch', (req, res) => {
   ogCount.push(uploadedDataAsCount)
   writeToCountCSV(convert2DArrayToCSV(ogCount));
 
+  console.log("Match Uploaded");
   res.sendStatus(200);
 });
 
@@ -231,7 +249,7 @@ function readFromPointsCSV() {
 
 function readFromGridCSV() {
   results = [];
-  data = fs.readFileSync('./public/dataWithGrid.csv', 'utf8');
+  data = fs.readFileSync('./public/dataAsGrid.csv', 'utf8');
 
   const rows = data.trim().split('\n');
 
@@ -307,18 +325,6 @@ function convert2DArrayToCSV(data) {
   }).join("\n"));
 }
 
-data = readFromCSV();
-if (data == 0) {
-  headers = [[]];
-  for (let i = 0; i < fields.length; i++) {
-    headers[0].push(fields[i].name);
-  }
-
-  for (let i = 0; i < fields.length; i++) {
-    headers[0].push(fields[i].name + " Points");
-  }
-  writeToCSV(convert2DArrayToCSV(headers))
-}
 
 
 data = readFromPointsCSV();
@@ -351,5 +357,24 @@ if (data == 0) {
     
   }
   writeToCountCSV(convert2DArrayToCSV(headers))
+}
+
+
+data = readFromGridCSV();
+if (data == 0) {
+  headers = [[]];
+  for (let i = 0; i < gridFields.length; i++) {
+    if (gridFields[i].type == "checkbox grid") {
+      for (let j=0; j<gridFields[i].grid.length; j++) {
+        for (let k=0; k<gridFields[i].grid.length; k++) {
+          headers[0].push(gridFields[i].name+" "+j+" "+k);
+        }
+      }
+    } else {
+      headers[0].push(gridFields[i].name);
+    }
+    
+  }
+  writeToGridCSV(convert2DArrayToCSV(headers))
 }
 
