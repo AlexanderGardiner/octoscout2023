@@ -24,6 +24,7 @@ function initalizeFields() {
       elements[i].type = "number";
       elements[i].id = fields[i].name;
       elements[i].value = 0;
+      elements[i].style.outline = "4px solid " + fields[i].color;
       div.appendChild(elements[i]);
 
       var decrementButton = document.createElement("button");
@@ -91,11 +92,11 @@ function initalizeFields() {
   getScoutingDataButtonCount.setAttribute("onclick", "getScoutingDataAsCount()");
 
 
-  uploadButton.style["margin-top"] = "8px";
-  exportButton.style["margin-top"] = "8px";
-  clearButton.style["margin-top"] = "8px";
-  getScoutingDataButtonPoints.style["margin-top"] = "8px";
-  getScoutingDataButtonCount.style["margin-top"] = "8px";
+  uploadButton.style["margin-top"] = "12px";
+  exportButton.style["margin-top"] = "12px";
+  clearButton.style["margin-top"] = "12px";
+  getScoutingDataButtonPoints.style["margin-top"] = "12px";
+  getScoutingDataButtonCount.style["margin-top"] = "12px";
 
   div.appendChild(exportButton);
   div.appendChild(uploadButton);

@@ -8,6 +8,7 @@ p {
   margin:auto;
   font-size: 10px;
   margin:0px;
+  margin-bottom:3px;
   padding:0px;
   padding-top:8px;
   margin-bottom: 2px;
@@ -17,11 +18,15 @@ p {
 }
 
 button {
-  margin:auto;
-  margin-right: 5px;
-  margin-left: 5px;
+  margin-right: 7px;
+  margin-left: 7px;
+  margin-top:4px;
+  margin-bottom: 4px;
   border-radius: 4px;
-  padding: 2px 4px;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   text-decoration: none;
   border: none;
   color: black;
@@ -49,6 +54,9 @@ input {
   background-color: #ebebeb;
   border: none;
   color: #231651;
+  margin-left:5px;
+  margin-right:5px;
+  margin-top:2px;
 }
 
 select {
@@ -56,6 +64,8 @@ select {
 }
 
 input[type=checkbox] {
+  width:20px;
+  height:20px;
   outline: 2px solid #150fff;
 }
 
