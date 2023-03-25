@@ -36,38 +36,39 @@ fields = [{ name: "Team Number", type: "text" },
 { name: "Notes", type: "text" }];
 
 gridFields = [
-{ name: "Team Number", type: "text" },
-{ name: "Match Number", type: "text" },
-{ name: "Team Color", type: "choice", choices: ["Red", "Blue"], points: ["Red", "Blue"] },
-{ name: "Scout Initals", type: "text" },
-{name: "Pieces Placed Auto", type: "checkbox grid", grid: [[6, 6, 6, 6, 6, 6, 6, 6, 6],
-  [4, 4, 4, 4, 4, 4, 4, 4, 4],
-  [3, 3, 3, 3, 3, 3, 3, 3, 3]],
-  rowNames: ["Top", "Middle", "Bottom"], colors: [["#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00"],
-  ["#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00"],
-  ["#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00"]],
-  categories: [[0, 3, 0, 0, 3, 0, 0, 3, 0],
-  [1, 4, 1, 1, 4, 1, 1, 4, 1],
-  [2, 5, 2, 2, 5, 2, 2, 5, 2]],
-  categoriesNames: ["Cone High Auto","Cone Mid Auto", "Cone Low Auto", "Cube High Auto", "Cube Mid Auto", "Cube Low Auto"]
-},
-{ name: "Mobility Auto", type: "choice", choices: ["None", "Attempted Mobility", "Mobility"], points: [0, 0, 3] },
-{ name: "Balance Auto", type: "choice", choices: ["None", "Attempted", "Docked", "Engaged"], points: [0, 0, 8, 12] },
-{ name: "Cones Collected", type: "increment", points: 1 },
-{ name: "Cubes Collected", type: "increment", points: 1 },
-{
-  name: "Pieces Placed", type: "checkbox grid", grid: [[5, 5, 5, 5, 5, 5, 5, 5, 5],
-  [3, 3, 3, 3, 3, 3, 3, 3, 3],
-  [2, 2, 2, 2, 2, 2, 2, 2, 2]],
-  rowNames: ["Top", "Middle", "Bottom"], colors: [["#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00"],
-  ["#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00"],
-  ["#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00"]],
-  categories: [[0, 3, 0, 0, 3, 0, 0, 3, 0],
-  [1, 4, 1, 1, 4, 1, 1, 4, 1],
-  [2, 5, 2, 2, 5, 2, 2, 5, 2]], categoriesNames: ["Cone High","Cone Mid", "Cone Low", "Cube High", "Cube Mid", "Cube Low"]
-},
-{ name: "Endgame Teleop", type: "choice", choices: ["None", "Park", "Docked", "Engaged"], points: [0, 2, 6, 10] },
-{ name: "Notes", type: "text" }];
+  { name: "Team Number", type: "text" },
+  { name: "Match Number", type: "text" },
+  { name: "Team Color", type: "choice", choices: ["Red", "Blue"], points: ["Red", "Blue"] },
+  { name: "Scout Initals", type: "text" },
+  {
+    name: "Pieces Placed Auto", type: "checkbox grid", grid: [[6, 6, 6, 6, 6, 6, 6, 6, 6],
+    [4, 4, 4, 4, 4, 4, 4, 4, 4],
+    [3, 3, 3, 3, 3, 3, 3, 3, 3]],
+    rowNames: ["Top", "Middle", "Bottom"], colors: [["#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00"],
+    ["#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00"],
+    ["#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00"]],
+    categories: [[0, 3, 0, 0, 3, 0, 0, 3, 0],
+    [1, 4, 1, 1, 4, 1, 1, 4, 1],
+    [2, 5, 2, 2, 5, 2, 2, 5, 2]],
+    categoriesNames: ["Cone High Auto", "Cone Mid Auto", "Cone Low Auto", "Cube High Auto", "Cube Mid Auto", "Cube Low Auto"]
+  },
+  { name: "Mobility Auto", type: "choice", choices: ["None", "Attempted Mobility", "Mobility"], points: [0, 0, 3] },
+  { name: "Balance Auto", type: "choice", choices: ["None", "Attempted", "Docked", "Engaged"], points: [0, 0, 8, 12] },
+  { name: "Cones Collected", type: "increment", points: 1 },
+  { name: "Cubes Collected", type: "increment", points: 1 },
+  {
+    name: "Pieces Placed", type: "checkbox grid", grid: [[5, 5, 5, 5, 5, 5, 5, 5, 5],
+    [3, 3, 3, 3, 3, 3, 3, 3, 3],
+    [2, 2, 2, 2, 2, 2, 2, 2, 2]],
+    rowNames: ["Top", "Middle", "Bottom"], colors: [["#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00"],
+    ["#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00"],
+    ["#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00", "#fffb00", "3700ff", "#fffb00"]],
+    categories: [[0, 3, 0, 0, 3, 0, 0, 3, 0],
+    [1, 4, 1, 1, 4, 1, 1, 4, 1],
+    [2, 5, 2, 2, 5, 2, 2, 5, 2]], categoriesNames: ["Cone High", "Cone Mid", "Cone Low", "Cube High", "Cube Mid", "Cube Low"]
+  },
+  { name: "Endgame Teleop", type: "choice", choices: ["None", "Park", "Docked", "Engaged"], points: [0, 2, 6, 10] },
+  { name: "Notes", type: "text" }];
 
 app.post('/uploadMatch', (req, res) => {
   uploadedData = req.body.data;
@@ -285,13 +286,13 @@ if (data == 0) {
   headers = [[]];
   for (let i = 0; i < gridFields.length; i++) {
     if (gridFields[i].type == "checkbox grid") {
-      for (let j=0; j<gridFields[i].categoriesNames.length; j++) {
+      for (let j = 0; j < gridFields[i].categoriesNames.length; j++) {
         headers[0].push(gridFields[i].categoriesNames[j]);
       }
     } else {
       headers[0].push(gridFields[i].name);
     }
-    
+
   }
   writeToPointsCSV(convert2DArrayToCSV(headers))
 }
@@ -302,13 +303,13 @@ if (data == 0) {
   headers = [[]];
   for (let i = 0; i < gridFields.length; i++) {
     if (gridFields[i].type == "checkbox grid") {
-      for (let j=0; j<gridFields[i].categoriesNames.length; j++) {
+      for (let j = 0; j < gridFields[i].categoriesNames.length; j++) {
         headers[0].push(gridFields[i].categoriesNames[j]);
       }
     } else {
       headers[0].push(gridFields[i].name);
     }
-    
+
   }
   writeToCountCSV(convert2DArrayToCSV(headers))
 }
@@ -319,15 +320,15 @@ if (data == 0) {
   headers = [[]];
   for (let i = 0; i < gridFields.length; i++) {
     if (gridFields[i].type == "checkbox grid") {
-      for (let j=0; j<gridFields[i].grid.length; j++) {
-        for (let k=0; k<gridFields[i].grid.length; k++) {
-          headers[0].push(gridFields[i].name+" "+j+" "+k);
+      for (let j = 0; j < gridFields[i].grid.length; j++) {
+        for (let k = 0; k < gridFields[i].grid.length; k++) {
+          headers[0].push(gridFields[i].name + " " + j + " " + k);
         }
       }
     } else {
       headers[0].push(gridFields[i].name);
     }
-    
+
   }
   writeToGridCSV(convert2DArrayToCSV(headers))
 }
