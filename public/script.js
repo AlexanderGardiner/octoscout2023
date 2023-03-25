@@ -1,3 +1,5 @@
+viewGrid = false;
+
 fields = [];
 elementsNames = [];
 elements = [];
@@ -7,16 +9,17 @@ function initalizeFields() {
   for (let i = 0; i < fields.length; i++) {
     var name = document.createElement("p");
     name.innerHTML = fields[i].name;
-    elementsNames.push(fields[i].name);
     div.appendChild(name);
 
     if (fields[i].type == "text") {
+      elementsNames.push(fields[i].name);
       elements.push(document.createElement("input"));
       elements[i].type = "text";
       elements[i].id = fields[i].name;
       div.appendChild(elements[i]);
 
-    } if (fields[i].type == "increment") {
+    } else if (fields[i].type == "increment") {
+      elementsNames.push(fields[i].name);
       elements.push(document.createElement("input"));
       elements[i].type = "number";
       elements[i].id = fields[i].name;
@@ -34,6 +37,7 @@ function initalizeFields() {
       incrementButton.setAttribute("onclick", 'incrementInput("' + fields[i].name + '")');
 
     } else if (fields[i].type == "choice") {
+      elementsNames.push(fields[i].name);
       elements.push(document.createElement("select"));
       elements[i].id = fields[i].name;
       div.appendChild(elements[i]);
@@ -44,10 +48,26 @@ function initalizeFields() {
         option.text = fields[i].choices[j];
         elements[i].appendChild(option)
       }
+
+    } else if (fields[i].type == "checkbox grid") {
+      elements.push([]);
+      for (let j=0; j<fields[i].grid.length;j++) {
+        elements[i].push([]);
+
+        for (let k=0; k<fields[i].grid[j].length;k++) {
+          elementsNames.push(fields[i].name +": " +fields[i].rowNames[j]+" "+k);
+          elements[i][j].push(document.createElement("input"));
+          elements[i][j][k].type = "checkbox";
+          elements[i][j][k].style.outline = "2px solid "+fields[i].colors[j][k];
+          div.appendChild(elements[i][j][k]);
+        }
+
+        div.appendChild(document.createElement("br"));
+
+      }
     } 
 
     div.appendChild(document.createElement("br"));
-
   }
 
   var exportButton = document.createElement("button");
@@ -106,6 +126,19 @@ function getFieldsAndInitialize() {
   });
 }
 
+function getGridFieldsAndInitialize() {
+  fetch("/getGridFields", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((response) => response.json())
+  .then((data) => {
+    fields = data;
+    initalizeFields();
+  });
+}
+
 function exportFields() {
   elementsValues = [];
   elementsValues = getElementsValues();
@@ -119,10 +152,16 @@ function getElementsValues() {
     if (fields[i].type == "text") {
       elementsValues.push(elements[i].value);
     } else if (fields[i].type == "increment") {
-      elementsValues.push(parseInt(elements[i].value));
+      elementsValues.push(elements[i].value);
     } else if (fields[i].type == "choice") {
       elementsValues.push(elements[i].value);
-    }
+    } else if (fields[i].type == "checkbox grid") {
+      for (let j=0; j<fields[i].grid.length;j++) {
+        for (let k=0; k<fields[i].grid[j].length;k++) {
+          elementsValues.push(elements[i][j][k].checked);
+        }
+      }
+    } 
   }
 
   return elementsValues;
@@ -142,11 +181,15 @@ function downloadCSV(rows) {
 }
 
 function uploadMatch() {
+  uploadPath = "/uploadMatch";
+  if (viewGrid) {
+    uploadPath = "/uploadGridMatch";
+  }
   elementsValues = [];
   elementsValues = getElementsValues();
   csvData = [elementsNames, elementsValues];
   jsonData = { data: csvData };
-  fetch("/uploadMatch", {
+  fetch(uploadPath, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -160,12 +203,25 @@ function uploadMatch() {
       alert("Upload Failed");
     }
   })
+
 }
+
 
 function clearData() {
   document.getElementById("input").innerHTML = '';
   elements.length = 0;
-  initalizeFields();
+  
+}
+
+function updateView() {
+  clearData();
+  console.log(document.getElementById("ViewSelector"));
+  if (document.getElementById("ViewSelector").value=="Normal") {
+    getFieldsAndInitialize();
+  } else {
+    viewGrid = true;
+    getGridFieldsAndInitialize();
+  }
 }
 
 function getScoutingDataAsPoints() {

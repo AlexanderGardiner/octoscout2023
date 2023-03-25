@@ -34,9 +34,15 @@ button {
   text-align:center;
   margin: auto;
   height: 100%;
-  padding: 10px;
   
   background-color: #0E1525;;
+}
+
+#viewSelectorContainer {
+  text-align:center;
+  margin: auto;
+  padding-top: 5px;
+  margin-bottom: 0px;
 }
 
 input {
