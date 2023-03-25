@@ -51,21 +51,21 @@ function initalizeFields() {
 
     } else if (fields[i].type == "checkbox grid") {
       elements.push([]);
-      for (let j=0; j<fields[i].grid.length;j++) {
+      for (let j = 0; j < fields[i].grid.length; j++) {
         elements[i].push([]);
 
-        for (let k=0; k<fields[i].grid[j].length;k++) {
-          elementsNames.push(fields[i].name +": " +fields[i].rowNames[j]+" "+k);
+        for (let k = 0; k < fields[i].grid[j].length; k++) {
+          elementsNames.push(fields[i].name + ": " + fields[i].rowNames[j] + " " + k);
           elements[i][j].push(document.createElement("input"));
           elements[i][j][k].type = "checkbox";
-          elements[i][j][k].style.outline = "2px solid "+fields[i].colors[j][k];
+          elements[i][j][k].style.outline = "2px solid " + fields[i].colors[j][k];
           div.appendChild(elements[i][j][k]);
         }
 
         div.appendChild(document.createElement("br"));
 
       }
-    } 
+    }
 
     div.appendChild(document.createElement("br"));
   }
@@ -80,7 +80,7 @@ function initalizeFields() {
 
   var clearButton = document.createElement("button");
   clearButton.innerHTML = "Clear Fields";
-  clearButton.setAttribute("onclick", "clearData()");
+  clearButton.setAttribute("onclick", "updateView()");
 
   var getScoutingDataButtonPoints = document.createElement("button");
   getScoutingDataButtonPoints.innerHTML = "Get Scouting Data (Points)";
@@ -120,10 +120,10 @@ function getFieldsAndInitialize() {
       "Content-Type": "application/json",
     },
   }).then((response) => response.json())
-  .then((data) => {
-    fields = data;
-    initalizeFields();
-  });
+    .then((data) => {
+      fields = data;
+      initalizeFields();
+    });
 }
 
 function getGridFieldsAndInitialize() {
@@ -133,10 +133,10 @@ function getGridFieldsAndInitialize() {
       "Content-Type": "application/json",
     },
   }).then((response) => response.json())
-  .then((data) => {
-    fields = data;
-    initalizeFields();
-  });
+    .then((data) => {
+      fields = data;
+      initalizeFields();
+    });
 }
 
 function exportFields() {
@@ -156,12 +156,12 @@ function getElementsValues() {
     } else if (fields[i].type == "choice") {
       elementsValues.push(elements[i].value);
     } else if (fields[i].type == "checkbox grid") {
-      for (let j=0; j<fields[i].grid.length;j++) {
-        for (let k=0; k<fields[i].grid[j].length;k++) {
+      for (let j = 0; j < fields[i].grid.length; j++) {
+        for (let k = 0; k < fields[i].grid[j].length; k++) {
           elementsValues.push(elements[i][j][k].checked);
         }
       }
-    } 
+    }
   }
 
   return elementsValues;
@@ -210,13 +210,13 @@ function uploadMatch() {
 function clearData() {
   document.getElementById("input").innerHTML = '';
   elements.length = 0;
-  
+
 }
 
 function updateView() {
   clearData();
   console.log(document.getElementById("ViewSelector"));
-  if (document.getElementById("ViewSelector").value=="Normal") {
+  if (document.getElementById("ViewSelector").value == "Normal") {
     getFieldsAndInitialize();
   } else {
     viewGrid = true;
