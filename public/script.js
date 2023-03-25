@@ -17,6 +17,7 @@ function initalizeFields() {
       elements[i].type = "text";
       elements[i].id = fields[i].name;
       div.appendChild(elements[i]);
+      div.appendChild(document.createElement("br"));
 
     } else if (fields[i].type == "increment") {
       elementsNames.push(fields[i].name);
@@ -24,7 +25,7 @@ function initalizeFields() {
       elements[i].type = "number";
       elements[i].id = fields[i].name;
       elements[i].value = 0;
-      elements[i].style.outline = "4px solid " + fields[i].color;
+      elements[i].style.border = "4px solid " + fields[i].color;
       div.appendChild(elements[i]);
 
       var decrementButton = document.createElement("button");
@@ -36,6 +37,8 @@ function initalizeFields() {
       incrementButton.innerHTML = "+";
       div.appendChild(incrementButton);
       incrementButton.setAttribute("onclick", 'incrementInput("' + fields[i].name + '")');
+
+      div.appendChild(document.createElement("br"));
 
     } else if (fields[i].type == "choice") {
       elementsNames.push(fields[i].name);
@@ -50,6 +53,8 @@ function initalizeFields() {
         elements[i].appendChild(option)
       }
 
+      div.appendChild(document.createElement("br"));
+
     } else if (fields[i].type == "checkbox grid") {
       elements.push([]);
       for (let j = 0; j < fields[i].grid.length; j++) {
@@ -59,7 +64,8 @@ function initalizeFields() {
           elementsNames.push(fields[i].name + ": " + fields[i].rowNames[j] + " " + k);
           elements[i][j].push(document.createElement("input"));
           elements[i][j][k].type = "checkbox";
-          elements[i][j][k].style.outline = "2px solid " + fields[i].colors[j][k];
+          elements[i][j][k].style.outline = "4px solid " + fields[i].colors[j][k];
+          elements[i][j][k].style.setProperty('--color', fields[i].colors[j][k]);
           div.appendChild(elements[i][j][k]);
         }
 
@@ -68,7 +74,7 @@ function initalizeFields() {
       }
     }
 
-    div.appendChild(document.createElement("br"));
+
   }
 
   var exportButton = document.createElement("button");
