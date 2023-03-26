@@ -51,8 +51,8 @@ gridFields = [
   },
   { name: "Mobility Auto", type: "choice", choices: ["None", "Attempted Mobility", "Mobility"], points: [0, 0, 3] },
   { name: "Balance Auto", type: "choice", choices: ["None", "Attempted", "Docked", "Engaged"], points: [0, 0, 8, 12] },
-  { name: "Cones Collected", type: "increment", points: 1 },
-  { name: "Cubes Collected", type: "increment", points: 1 },
+  { name: "Cones Collected", type: "increment", points: 1,color: "#fffb00" },
+  { name: "Cubes Collected", type: "increment", points: 1, color: "#A5C0FF " },
   {
     name: "Pieces Placed", type: "checkbox grid", grid: [[5, 5, 5, 5, 5, 5, 5, 5, 5],
     [3, 3, 3, 3, 3, 3, 3, 3, 3],
