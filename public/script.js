@@ -1,4 +1,4 @@
-viewGrid = false;
+viewGrid = true;
 
 fields = [];
 elementsNames = [];
@@ -121,6 +121,7 @@ function decrementInput(inputID) {
 }
 
 function getFieldsAndInitialize() {
+  document.getElementById("ViewSelector").children[0] = true;
   fetch("/getFields", {
     method: "GET",
     headers: {
@@ -134,6 +135,7 @@ function getFieldsAndInitialize() {
 }
 
 function getGridFieldsAndInitialize() {
+  document.getElementById("ViewSelector").children[1].selected = true;
   fetch("/getGridFields", {
     method: "GET",
     headers: {
@@ -224,10 +226,14 @@ function updateView() {
   clearData();
   console.log(document.getElementById("ViewSelector"));
   if (document.getElementById("ViewSelector").value == "Normal") {
+    viewGrid = false;
     getFieldsAndInitialize();
+    document.cookie = "view=normal; expires=Thu, 18 Dec 2025 12:00:00 UTC";
   } else {
     viewGrid = true;
     getGridFieldsAndInitialize();
+
+    document.cookie = "view=grid; expires=Thu, 18 Dec 2025 12:00:00 UTC";
   }
 }
 
@@ -239,4 +245,32 @@ function getScoutingDataAsCount() {
   window.location.href = "/dataAsCount.csv";
 }
 
-getFieldsAndInitialize();
+if (document.cookie) {
+  console.log(document.cookie.view);
+  if (getCookie("view") == "normal") {
+    viewGrid = false;
+    getFieldsAndInitialize();
+  } else {
+    viewGrid = true;
+    getGridFieldsAndInitialize();
+  }
+} else {
+  getGridFieldsAndInitialize();
+}
+
+
+function getCookie(cookieName) {
+  let cookieAndEqualsSign = cookieName + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let cookies = decodedCookie.split(';');
+  for (let i = 0; i < cookies.length; i++) {
+    let cookie = cookies[i];
+    while (cookie.charAt(0) == ' ') {
+      cookie = cookie.substring(1);
+    }
+    if (cookie.indexOf(name) == 0) {
+      return cookie.substring(cookieAndEqualsSign.length, cookie.length);
+    }
+  }
+  return "";
+}
