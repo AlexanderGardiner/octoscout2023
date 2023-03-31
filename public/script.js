@@ -3,15 +3,15 @@ viewGrid = true;
 fields = [];
 elementsNames = [];
 elements = [];
-
 function initalizeFields() {
   div = document.getElementById("input");
   for (let i = 0; i < fields.length; i++) {
-    var name = document.createElement("p");
-    name.innerHTML = fields[i].name;
-    div.appendChild(name);
 
     if (fields[i].type == "text") {
+      var name = document.createElement("p");
+      name.innerHTML = fields[i].name;
+      div.appendChild(name);
+      
       elementsNames.push(fields[i].name);
       elements.push(document.createElement("input"));
       elements[i].type = "text";
@@ -20,6 +20,10 @@ function initalizeFields() {
       div.appendChild(document.createElement("br"));
 
     } else if (fields[i].type == "increment") {
+      var name = document.createElement("p");
+      name.innerHTML = fields[i].name;
+      div.appendChild(name);
+      
       elementsNames.push(fields[i].name);
       elements.push(document.createElement("input"));
       elements[i].type = "number";
@@ -41,6 +45,10 @@ function initalizeFields() {
       div.appendChild(document.createElement("br"));
 
     } else if (fields[i].type == "choice") {
+      var name = document.createElement("p");
+      name.innerHTML = fields[i].name;
+      div.appendChild(name);
+      
       elementsNames.push(fields[i].name);
       elements.push(document.createElement("select"));
       elements[i].id = fields[i].name;
@@ -56,6 +64,10 @@ function initalizeFields() {
       div.appendChild(document.createElement("br"));
 
     } else if (fields[i].type == "checkbox grid") {
+      var name = document.createElement("p");
+      name.innerHTML = fields[i].name;
+      div.appendChild(name);
+      
       elements.push([]);
       for (let j = 0; j < fields[i].grid.length; j++) {
         elements[i].push([]);
@@ -72,10 +84,15 @@ function initalizeFields() {
         div.appendChild(document.createElement("br"));
 
       }
+    } else if (fields[i].type == "title") {
+      div.appendChild(document.createElement("hr"));
+      elements.push(document.createElement("h2"));
+      elements[i].innerHTML = fields[i].name;
+      div.appendChild(elements[i]);
     }
 
 
-  }
+  } 
 
   var exportButton = document.createElement("button");
   exportButton.innerHTML = "Export as CSV";
@@ -224,17 +241,19 @@ function clearData() {
 
 function updateView() {
   clearData();
-  console.log(document.getElementById("ViewSelector"));
-  if (document.getElementById("ViewSelector").value == "Normal") {
-    viewGrid = false;
-    getFieldsAndInitialize();
-    document.cookie = "view=normal; expires=Thu, 18 Dec 2025 12:00:00 UTC";
-  } else {
-    viewGrid = true;
-    getGridFieldsAndInitialize();
+  viewGrid = true;
+  getGridFieldsAndInitialize();
+  // console.log(document.getElementById("ViewSelector"));
+  // if (document.getElementById("ViewSelector").value == "Normal") {
+  //   viewGrid = false;
+  //   getFieldsAndInitialize();
+  //   document.cookie = "view=normal; expires=Thu, 18 Dec 2025 12:00:00 UTC";
+  // } else {
+  //   viewGrid = true;
+  //   getGridFieldsAndInitialize();
 
-    document.cookie = "view=grid; expires=Thu, 18 Dec 2025 12:00:00 UTC";
-  }
+  //   document.cookie = "view=grid; expires=Thu, 18 Dec 2025 12:00:00 UTC";
+  // }
 }
 
 function getScoutingDataAsPoints() {
@@ -245,18 +264,22 @@ function getScoutingDataAsCount() {
   window.location.href = "/dataAsCount.csv";
 }
 
-if (document.cookie) {
-  console.log(document.cookie.view);
-  if (getCookie("view") == "normal") {
-    viewGrid = false;
-    getFieldsAndInitialize();
-  } else {
-    viewGrid = true;
-    getGridFieldsAndInitialize();
-  }
-} else {
-  getGridFieldsAndInitialize();
-}
+
+viewGrid = true;
+getGridFieldsAndInitialize();
+
+// if (document.cookie) {
+//   console.log(document.cookie.view);
+//   if (getCookie("view") == "normal") {
+//     viewGrid = false;
+//     getFieldsAndInitialize();
+//   } else {
+//     viewGrid = true;
+//     getGridFieldsAndInitialize();
+//   }
+// } else {
+//   getGridFieldsAndInitialize();
+// }
 
 
 function getCookie(cookieName) {

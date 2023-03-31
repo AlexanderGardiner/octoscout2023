@@ -37,6 +37,7 @@ gridFields = [
   { name: "Match Number", type: "text" },
   { name: "Team Color", type: "choice", choices: ["Red", "Blue"], points: ["Red", "Blue"] },
   { name: "Scout Initals", type: "text" },
+  { name: "AUTO", type: "title" },
   {
     name: "Pieces Placed Auto", type: "checkbox grid", grid: [[6, 6, 6, 6, 6, 6, 6, 6, 6],
     [4, 4, 4, 4, 4, 4, 4, 4, 4],
@@ -51,6 +52,7 @@ gridFields = [
   },
   { name: "Mobility Auto", type: "choice", choices: ["None", "Attempted Mobility", "Mobility"], points: [0, 0, 3] },
   { name: "Balance Auto", type: "choice", choices: ["None", "Attempted", "Docked", "Engaged"], points: [0, 0, 8, 12] },
+  { name: "TELEOP", type: "title" },
   { name: "Cones Collected", type: "increment", points: 1,color: "#fffb00" },
   { name: "Cubes Collected", type: "increment", points: 1, color: "#A5C0FF " },
   {
@@ -72,8 +74,10 @@ app.post('/uploadMatch', (req, res) => {
 
   // Write data to count csv
   data = readFromCountCSV();
+  uploadedData[1].push(new Date().toString());
   data.push(uploadedData[1]);
   writeToCountCSV(convert2DArrayToCSV(data))
+  uploadedData[1].pop();
 
   // Format data and write to points csv
   pointsData = [];
@@ -90,7 +94,7 @@ app.post('/uploadMatch', (req, res) => {
       }
     }
   }
-
+  pointsData.push(new Date().toString());
   pointsCSV = readFromPointsCSV();
   pointsCSV.push(pointsData);
   writeToPointsCSV(convert2DArrayToCSV(pointsCSV));
@@ -106,8 +110,10 @@ app.post('/uploadGridMatch', (req, res) => {
 
   // Write data to grid csv
   data = readFromGridCSV();
+  uploadedData[1].push(new Date().toString());
   data.push(uploadedData[1]);
   writeToGridCSV(convert2DArrayToCSV(data));
+  uploadedData[1].pop();
   data.pop();
 
 
@@ -150,7 +156,7 @@ app.post('/uploadGridMatch', (req, res) => {
     i++;
   }
 
-
+  uploadedDataAsPoints.push(new Date().toString());
   // Format data and write to points csv
   pointsCSV = readFromPointsCSV();
   pointsCSV.push(uploadedDataAsPoints)
@@ -189,6 +195,7 @@ app.post('/uploadGridMatch', (req, res) => {
     i++;
   }
 
+  uploadedDataAsCount.push(new Date().toString());
   coutCSV = readFromCountCSV();
   coutCSV.push(uploadedDataAsCount)
   writeToCountCSV(convert2DArrayToCSV(coutCSV));
@@ -291,6 +298,7 @@ if (data == 0) {
     }
 
   }
+  headers[0].push("Time Uploaded");
   writeToPointsCSV(convert2DArrayToCSV(headers))
 }
 
@@ -308,6 +316,7 @@ if (data == 0) {
     }
 
   }
+  headers[0].push("Time Uploaded");
   writeToCountCSV(convert2DArrayToCSV(headers))
 }
 
@@ -327,6 +336,7 @@ if (data == 0) {
     }
 
   }
+  headers[0].push("Time Uploaded");
   writeToGridCSV(convert2DArrayToCSV(headers))
 }
 
