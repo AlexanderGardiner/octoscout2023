@@ -41,13 +41,16 @@ gridFields = [
   {
     name: "Pieces Placed Auto", type: "checkbox grid", grid: [[6, 6, 6, 6, 6, 6, 6, 6, 6],
     [4, 4, 4, 4, 4, 4, 4, 4, 4],
+    [3, 3, 3, 3, 3, 3, 3, 3, 3],
     [3, 3, 3, 3, 3, 3, 3, 3, 3]],
     rowNames: ["Top", "Middle", "Bottom"], colors: [["#fffb00", "#A5C0FF ", "#fffb00", "#fffb00", "#A5C0FF ", "#fffb00", "#fffb00", "#A5C0FF ", "#fffb00"],
     ["#fffb00", "#A5C0FF ", "#fffb00", "#fffb00", "#A5C0FF ", "#fffb00", "#fffb00", "#A5C0FF ", "#fffb00"],
-    ["#fffb00", "#A5C0FF ", "#fffb00", "#fffb00", "#A5C0FF ", "#fffb00", "#fffb00", "#A5C0FF ", "#fffb00"]],
+    ["#fffb00", "#fffb00 ", "#fffb00", "#fffb00", "#fffb00 ", "#fffb00", "#fffb00", "#fffb00 ", "#fffb00"],
+    ["#A5C0FF", "#A5C0FF ", "#A5C0FF", "#A5C0FF", "#A5C0FF ", "#A5C0FF", "#A5C0FF", "#A5C0FF ", "#A5C0FF"]],
     categories: [[0, 3, 0, 0, 3, 0, 0, 3, 0],
     [1, 4, 1, 1, 4, 1, 1, 4, 1],
-    [2, 5, 2, 2, 5, 2, 2, 5, 2]],
+    [2, 2, 2, 2, 2, 2, 2, 2, 2],
+    [5, 5, 5, 5, 5, 5, 5, 5, 5]],
     categoriesNames: ["Cone High Auto", "Cone Mid Auto", "Cone Low Auto", "Cube High Auto", "Cube Mid Auto", "Cube Low Auto"]
   },
   { name: "Mobility Auto", type: "choice", choices: ["None", "Attempted Mobility", "Mobility"], points: [0, 0, 3] },
@@ -58,13 +61,16 @@ gridFields = [
   {
     name: "Pieces Placed", type: "checkbox grid", grid: [[5, 5, 5, 5, 5, 5, 5, 5, 5],
     [3, 3, 3, 3, 3, 3, 3, 3, 3],
+    [2, 2, 2, 2, 2, 2, 2, 2, 2],
     [2, 2, 2, 2, 2, 2, 2, 2, 2]],
     rowNames: ["Top", "Middle", "Bottom"], colors: [["#fffb00", "#A5C0FF ", "#fffb00", "#fffb00", "#A5C0FF ", "#fffb00", "#fffb00", "#A5C0FF ", "#fffb00"],
     ["#fffb00", "#A5C0FF ", "#fffb00", "#fffb00", "#A5C0FF ", "#fffb00", "#fffb00", "#A5C0FF ", "#fffb00"],
-    ["#fffb00", "#A5C0FF ", "#fffb00", "#fffb00", "#A5C0FF ", "#fffb00", "#fffb00", "#A5C0FF ", "#fffb00"]],
+    ["#fffb00", "#fffb00 ", "#fffb00", "#fffb00", "#fffb00 ", "#fffb00", "#fffb00", "#fffb00 ", "#fffb00"],
+    ["#A5C0FF", "#A5C0FF ", "#A5C0FF", "#A5C0FF", "#A5C0FF ", "#A5C0FF", "#A5C0FF", "#A5C0FF ", "#A5C0FF"]],
     categories: [[0, 3, 0, 0, 3, 0, 0, 3, 0],
     [1, 4, 1, 1, 4, 1, 1, 4, 1],
-    [2, 5, 2, 2, 5, 2, 2, 5, 2]], categoriesNames: ["Cone High", "Cone Mid", "Cone Low", "Cube High", "Cube Mid", "Cube Low"]
+    [2, 2, 2, 2, 2, 2, 2, 2, 2],
+    [5, 5, 5, 5, 5, 5, 5, 5, 5]], categoriesNames: ["Cone High", "Cone Mid", "Cone Low", "Cube High", "Cube Mid", "Cube Low"]
   },
   { name: "Endgame Teleop", type: "choice", choices: ["None", "Park", "Docked", "Engaged"], points: [0, 2, 6, 10] },
   { name: "Notes", type: "text" }];
@@ -293,7 +299,7 @@ if (data == 0) {
       for (let j = 0; j < gridFields[i].categoriesNames.length; j++) {
         headers[0].push(gridFields[i].categoriesNames[j]);
       }
-    } else {
+    } else if (gridFields[i].type != "title") {
       headers[0].push(gridFields[i].name);
     }
 
@@ -311,7 +317,7 @@ if (data == 0) {
       for (let j = 0; j < gridFields[i].categoriesNames.length; j++) {
         headers[0].push(gridFields[i].categoriesNames[j]);
       }
-    } else {
+    } else if (gridFields[i].type != "title") {
       headers[0].push(gridFields[i].name);
     }
 
@@ -327,13 +333,14 @@ if (data == 0) {
   for (let i = 0; i < gridFields.length; i++) {
     if (gridFields[i].type == "checkbox grid") {
       for (let j = 0; j < gridFields[i].grid.length; j++) {
-        for (let k = 0; k < gridFields[i].grid.length; k++) {
+        for (let k = 0; k < gridFields[i].grid[j].length; k++) {
           headers[0].push(gridFields[i].name + " " + j + " " + k);
         }
       }
-    } else {
+    } else if (gridFields[i].type != "title") {
       headers[0].push(gridFields[i].name);
     }
+
 
   }
   headers[0].push("Time Uploaded");

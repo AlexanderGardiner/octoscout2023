@@ -104,7 +104,7 @@ function initalizeFields() {
 
   var clearButton = document.createElement("button");
   clearButton.innerHTML = "Clear Fields";
-  clearButton.setAttribute("onclick", "updateView()");
+  clearButton.setAttribute("onclick", "clearView()");
 
   var getScoutingDataButtonPoints = document.createElement("button");
   getScoutingDataButtonPoints.innerHTML = "Get Scouting Data (Points)";
@@ -176,7 +176,7 @@ function getElementsValues() {
   elementsValues = [];
   for (i = 0; i < elements.length; i++) {
     if (fields[i].type == "text") {
-      elementsValues.push(elements[i].value);
+      elementsValues.push('"'+elements[i].value+'"');
     } else if (fields[i].type == "increment") {
       elementsValues.push(elements[i].value);
     } else if (fields[i].type == "choice") {
@@ -236,8 +236,21 @@ function uploadMatch() {
 function clearData() {
   document.getElementById("input").innerHTML = '';
   elements.length = 0;
+  
 
 }
+
+function clearView() {
+  if (confirm("Clear fields?")) {
+    document.getElementById("input").innerHTML = '';
+    elements.length = 0;
+    viewGrid = true;
+    getGridFieldsAndInitialize();
+  }
+  
+
+}
+
 
 function updateView() {
   clearData();
