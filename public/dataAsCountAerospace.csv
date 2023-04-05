@@ -1,0 +1,107 @@
+Team Number,Scout Initals,Cone High Auto,Cone Mid Auto,Cone Low Auto,Cube High Auto,Cube Mid Auto,Cube Low Auto,Pieces Place auto,Mobility Auto,Balance Auto,Cones Collected,Cubes Collected,Cone High,Cone Mid,Cone Low,Cube High,Cube Mid,Cube Low,Piece placed,Endgame Teleop,How in the way of own alliance (none (0) to lots (10)),How tippy (none (0) to lots (10)),How good at defense (bad (0) to good (10)),Speed
+,,0,0,0,0,0,0,0,None,None,0,0,0,0,0,0,0,0,0,None,0,0,0,Fast
+5012,LL,0,0,0,0,0,1,1,Mobility,None,0,0,0,0,0,0,0,0,0,Docked,2,0,9,Fast
+2375,KL,0,0,1,0,0,0,1,None,Engaged,0,0,0,0,0,0,0,5,5,Docked,0,3,0,Slow
+5142,HH,0,0,0,1,0,0,1,Mobility,None,0,0,0,0,0,1,1,2,4,Engaged,1,0,3,Fast
+981,MR,0,0,0,0,0,1,1,Mobility,None,2,0,0,1,0,0,0,0,1,None,0,7,0,Slow
+687,AS ,1,0,0,0,0,0,1,Mobility,None,4,2,3,1,1,2,0,0,7,Park,0,0,0,Normal
+3669,Lg,1,0,0,0,0,0,1,Mobility,Engaged,4,0,1,3,0,0,0,0,4,Engaged,0,2,2,Normal
+9084,LL,1,0,0,0,0,0,1,Mobility,None,0,6,0,0,0,0,0,6,6,Engaged,0,0,0,Normal
+1197,MR,1,0,0,0,0,0,1,Mobility,None,0,1,0,0,0,0,0,0,0,None,5,2,0,Normal
+4419,HH,1,0,0,0,0,0,1,Mobility,Engaged,1,2,1,0,0,1,0,1,3,Engaged,3,3,0,Normal
+7157,KL,1,0,0,1,0,0,2,Mobility,None,5,4,5,0,0,2,0,1,8,Engaged,2,4,0,Fast
+3749,Lg,0,0,0,0,0,0,0,Mobility,None,4,0,2,0,1,0,0,0,3,Engaged,0,0,2,Fast
+6417,AS,0,0,0,1,0,0,1,Mobility,None,2,1,2,0,0,0,0,1,3,Park,5,3,0,Slow
+5869,MR,0,0,0,0,0,0,0,None,None,0,0,0,0,0,0,0,0,0,Engaged,2,5,1,Slow
+399,KL,0,0,0,0,1,0,1,Mobility,None,0,7,0,0,0,0,0,6,6,None,3,2,0,Fast
+7042,LL,0,0,0,1,0,0,1,Mobility,Engaged,1,1,0,1,1,0,0,1,3,None,5,8,0,Slow
+6657,AS,0,0,0,0,1,0,1,Mobility,None,0,5,0,0,0,0,0,5,5,Engaged,2,0,2,Normal
+3512,Lg,1,0,0,0,0,0,1,None,Docked,1,8,1,0,0,1,1,5,8,Park,2,0,3,Fast
+4687,HH,0,1,0,0,0,0,1,Mobility,None,2,2,0,3,0,0,2,1,6,Engaged,0,0,0,Fast
+8768,AS,0,0,0,0,0,1,1,None,Attempted,3,0,0,3,0,0,0,0,3,None,2,0,1,Normal
+8060,LL,0,0,0,0,0,0,0,None,None,0,0,0,0,0,0,0,0,0,Park,6,0,3,Slow
+8888,KL,1,0,0,0,0,0,1,Mobility,None,4,0,3,0,0,0,0,0,3,Docked,5,4,0,Normal
+2073,MR,0,0,0,1,0,0,1,Mobility,Engaged,0,8,0,0,0,1,0,8,9,Engaged,1,1,0,Fast
+6072,Lg,0,0,0,0,1,0,1,Mobility,None,0,0,0,0,0,0,0,0,0,None,3,0,7,Normal
+691,HH,0,0,0,0,0,0,0,None,None,0,4,0,0,0,0,0,4,4,Engaged,4,5,2,Normal
+3759,,0,0,0,0,0,0,0,Mobility,None,3,0,0,1,1,0,0,1,3,None,3,0,2,Slow
+4415,LL,1,0,0,0,0,0,1,Mobility,None,3,1,1,1,1,1,0,0,4,Engaged,0,0,0,Normal
+4414,KL,0,2,0,0,0,0,2,None,Engaged,4,9,3,1,0,1,1,6,12,Park,0,0,0,Fast
+981,HH,0,0,0,0,0,1,1,None,None,0,2,0,0,0,0,0,1,1,Engaged,5,7,0,Slow
+6305,Lg,0,0,0,0,0,0,0,Mobility,None,0,2,0,0,0,0,0,1,1,None,4,7,0,Slow
+2659,,1,0,0,0,0,0,1,None,None,2,4,1,2,0,1,1,1,6,Engaged,0,2,0,Fast
+4079,KL,0,0,0,0,0,1,1,Mobility,None,0,0,0,0,0,0,0,0,0,Engaged,0,3,1,Normal
+7607,Jay M,0,0,0,0,0,0,0,Mobility,None,0,1,0,0,0,0,0,1,1,Engaged,7,8,0,Slow
+3669,LL,1,0,0,0,0,0,1,Mobility,Engaged,2,2,2,0,1,0,0,0,3,None,1,0,0,Normal
+1197,HH,0,0,1,0,0,0,1,Attempted Mobility,None,2,0,0,1,0,0,0,0,1,Engaged,8,0,0,Slow
+5124,JJR,0,0,0,1,0,0,1,Mobility,None,0,5,0,0,0,0,0,5,5,Park,2,4,0,Normal
+4014,LP,0,0,0,0,0,0,0,None,Engaged,0,0,0,0,0,0,0,0,0,Engaged,1,0,7,Normal
+980,Jay M,0,0,0,0,0,0,0,None,None,2,1,0,2,0,0,0,1,3,None,4,6,0,Normal
+7042,LP,0,0,0,1,0,0,1,None,Docked,2,1,0,2,0,0,0,0,2,None,3,4,1,Fast
+5012,KL,0,0,0,0,0,1,1,None,None,0,0,0,0,0,0,0,0,0,None,0,0,10,Fast
+6657,LL,0,0,0,0,1,0,1,Mobility,None,0,2,0,0,0,0,1,1,2,Engaged,0,0,0,Fast
+3476,JJR,0,0,1,1,0,0,2,Mobility,None,9,0,4,2,1,0,0,0,7,Park,0,1,0,Fast
+9084,HH,0,0,0,0,0,0,0,None,None,0,0,0,0,0,0,0,0,0,None,0,0,0,Fast
+2375,HH,0,0,0,0,0,1,1,Mobility,None,0,0,0,0,0,0,0,0,0,None,1,0,8,Fast
+3749,Jay M,1,0,0,0,0,0,1,Mobility,None,2,3,0,1,1,1,0,2,5,Engaged,2,0,0,Fast
+7157,LP,1,0,0,0,0,0,1,Mobility,None,4,5,2,3,0,1,1,3,10,None,0,0,0,Fast
+6060,LL,0,0,0,0,0,1,1,Mobility,None,0,3,0,0,0,0,0,3,3,Docked,3,0,0,Slow
+3512,JJR,1,0,0,0,0,0,1,None,Docked,2,5,1,1,0,1,1,3,7,Engaged,0,0,0,Normal
+4419,Jay M,1,0,0,0,0,0,1,Mobility,Engaged,1,6,1,0,0,1,0,5,7,Engaged,1,2,0,Fast
+687,LL,1,0,0,0,0,0,1,Mobility,None,2,1,2,0,0,1,0,0,3,Park,4,0,3,Slow
+5869,HH,0,0,0,0,0,0,0,None,None,0,1,0,0,0,0,0,1,1,Engaged,2,2,0,Slow
+6417,KL,0,0,0,1,0,0,1,None,Engaged,1,2,1,0,0,1,0,0,2,Engaged,0,0,0,Slow
+2404,LP,1,0,0,0,0,0,1,Mobility,None,0,0,0,0,0,0,0,0,0,Engaged,5,7,2,Slow
+4698,JJR,0,0,1,0,0,0,1,Mobility,None,1,2,0,1,0,0,1,0,2,Park,8,0,0,Slow
+4698,JJR,0,0,1,0,0,0,1,Mobility,None,1,2,0,1,0,0,1,0,2,Park,8,0,0,Slow
+3759,HH,0,0,0,0,0,1,1,Mobility,None,0,0,0,0,0,0,0,0,0,None,3,0,0,Slow
+691,Jay M,0,0,0,0,0,0,0,Attempted Mobility,None,0,5,0,0,0,0,0,5,5,Park,2,1,0,Normal
+4415,LP,1,0,0,0,0,0,1,Mobility,Engaged,4,2,3,0,0,2,0,0,5,Docked,0,0,0,Normal
+4079,LL,0,0,0,1,0,0,1,Mobility,None,0,0,0,0,0,0,0,0,0,None,7,0,1,Slow
+981,JJR,0,0,0,0,0,1,1,Mobility,None,0,0,0,0,0,0,0,0,0,None,0,6,5,Slow
+6072,JJR,0,0,0,0,1,0,1,None,Engaged,0,3,0,0,0,0,0,2,2,Engaged,3,0,0,Slow
+6305,LP,0,0,1,0,0,0,1,Mobility,None,2,1,2,0,0,0,0,1,3,Engaged,5,4,3,Slow
+4414,LL,0,1,0,0,0,0,1,Mobility,Engaged,3,2,2,3,0,2,2,1,10,Engaged,0,0,0,Fast
+7042,Jay M,0,0,0,1,0,0,1,Mobility,None,0,4,0,0,0,0,0,5,5,Park,2,3,0,Fast
+6072,JJR,0,0,0,0,1,0,1,None,Engaged,0,3,0,0,0,0,0,2,2,Engaged,3,0,0,Slow
+3669,HH,1,0,0,0,0,0,1,Mobility,None,4,0,1,1,2,0,0,0,4,Engaged,3,3,0,Normal
+980,LL,0,0,1,0,0,0,1,None,None,3,1,1,0,0,0,0,1,2,Engaged,0,3,0,Normal
+3512,LP,1,0,0,0,0,0,1,None,Attempted,5,2,5,0,0,2,0,1,8,None,0,0,0,Fast
+1197,Jay M,0,0,1,0,0,0,1,Mobility,None,2,0,0,1,0,0,0,0,1,Engaged,6,1,0,Fast
+3749,HH,1,0,0,0,0,0,1,Mobility,None,5,0,4,0,0,0,0,1,5,Park,0,4,0,Fast
+5124,JJR,0,0,0,1,0,0,1,Mobility,None,0,5,0,0,0,0,0,2,2,Engaged,3,8,0,Fast
+8888,Jay M,1,0,0,0,0,0,1,Mobility,None,2,1,0,0,0,1,0,0,1,Engaged,4,5,0,Slow
+5012,LP,0,0,0,0,0,1,1,Mobility,None,0,0,0,0,0,0,0,1,1,None,4,1,3,Normal
+2404,LL,0,0,0,0,0,1,1,Mobility,None,0,0,0,0,0,0,0,0,0,Park,3,3,5,Normal
+4698,JJR,0,1,0,0,0,0,1,None,Docked,0,7,0,0,0,0,0,7,7,Park,4,0,0,Fast
+6417,HH,0,0,0,1,0,0,1,None,Engaged,0,3,0,0,0,0,0,3,3,Park,4,7,0,Normal
+6060,MR,0,0,0,0,0,1,1,Mobility,None,0,3,0,0,0,0,0,2,2,None,5,6,0,Slow
+4014,AS,0,0,0,0,0,0,0,Mobility,None,0,0,0,0,0,0,0,0,0,Engaged,2,0,9,Fast
+5869,LP,0,0,0,0,0,0,0,None,None,0,0,0,0,0,0,0,1,1,Docked,4,7,3,Slow
+2659,LL,1,0,0,1,0,0,2,Mobility,None,2,3,2,0,0,2,0,3,7,Park,0,5,0,Fast
+8768,MR,0,0,0,0,0,1,1,Mobility,None,3,3,1,2,0,1,1,0,5,None,0,1,0,Fast
+687,LL,1,0,0,0,0,0,1,Mobility,None,3,3,1,2,0,2,1,0,6,Engaged,0,0,0,Fast
+6657,MR,0,0,0,0,0,1,1,None,None,0,3,0,0,0,0,0,2,2,Engaged,1,0,0,Fast
+7157,AS,1,0,0,0,0,1,2,Mobility,Docked,2,4,2,2,0,1,1,1,7,None,2,0,0,Fast
+3476,LP,2,0,0,0,0,0,2,Mobility,Attempted,3,3,4,0,0,3,0,0,7,Engaged,0,0,0,Fast
+3669,LP,1,0,0,0,0,0,1,Mobility,Engaged,5,0,0,3,1,0,0,0,4,Engaged,3,3,4,Normal
+3749,AS,1,0,0,0,0,0,1,Mobility,None,0,6,0,0,0,1,0,5,6,Engaged,0,0,0,Normal
+3759,LL,0,0,0,1,0,0,1,Mobility,None,0,5,0,0,0,1,0,5,6,Engaged,0,0,0,Fast
+6072,MR,0,0,0,0,0,1,1,Mobility,None,0,2,0,0,0,0,2,1,3,None,2,0,0,Fast
+4698,AS,0,0,1,0,0,0,1,None,None,1,6,0,0,1,0,0,7,8,None,0,0,0,Fast
+4698,AS,0,0,1,0,0,0,1,None,None,1,6,0,0,1,0,0,7,8,Engaged,0,0,0,Fast
+9084,LL,1,0,0,0,0,0,1,Mobility,None,5,2,4,0,0,2,0,0,6,Engaged,0,0,0,Fast
+2073,LP,0,0,0,1,0,0,1,Mobility,Engaged,4,0,4,0,0,0,0,0,4,Engaged,2,0,0,Normal
+6060,MR,0,0,0,0,0,1,1,None,None,0,4,0,0,0,0,0,4,4,None,3,6,0,Slow
+3512,AS,1,0,0,0,0,0,1,Mobility,None,1,6,1,0,0,2,0,5,8,Park,0,0,0,Fast
+981,LL,0,0,0,0,0,1,1,Mobility,None,0,2,0,0,0,0,0,1,1,Engaged,7,6,0,Slow
+4419,LP,1,0,0,0,0,0,1,Mobility,Engaged,2,4,1,0,1,1,0,3,6,Engaged,3,2,0,Fast
+4419,LP,1,0,0,0,0,0,1,Mobility,Engaged,2,4,1,0,1,1,0,3,6,Engaged,3,2,0,Fast
+4014,AS,0,0,0,0,0,0,0,None,Engaged,0,0,0,0,0,0,0,0,0,Engaged,0,0,10,Fast
+2404,LP,0,0,0,0,0,0,0,Mobility,None,0,0,0,0,0,0,0,0,0,Docked,5,7,3,Slow
+4079,LL,0,0,0,1,0,0,1,Mobility,None,2,0,1,0,0,0,0,0,1,None,5,0,0,Slow
+7607,MR,0,0,1,0,0,0,1,None,None,0,2,0,0,0,0,0,2,2,None,2,4,0,Slow
+2375,AS,0,0,1,0,0,0,1,Mobility,None,0,3,0,0,0,0,0,3,3,None,4,0,0,Normal
+687,LL,1,0,0,0,0,0,1,None,Engaged,3,4,3,0,0,3,0,1,7,Park,0,0,0,Fast
+7042,LP,0,0,0,1,0,0,1,None,Attempted,3,0,1,0,1,0,0,0,2,Engaged,5,2,0,Slow
+2659,LP,1,0,0,0,0,0,1,Mobility,None,4,6,2,0,1,1,1,3,8,None,3,0,0,Fast
