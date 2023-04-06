@@ -73,12 +73,10 @@ gridFields = [
     [5, 5, 5, 5, 5, 5, 5, 5, 5]], categoriesNames: ["Cone High", "Cone Mid", "Cone Low", "Cube High", "Cube Mid", "Cube Low"]
   },
   { name: "Endgame Teleop", type: "choice", choices: ["None", "Park", "Docked", "Engaged"], points: [0, 2, 6, 10] },
-  { name: "How in the way of own alliance (none (0) to lots (10))", type: "choice", choices: ["0", "1", "2", "3","4", "5", "6", "7","8","9","10"], points: [1, 0.9, 0.8, 0.7,0.6,0.5,0.4,0.3,0.2,0.1,0] },
-  { name: "How tippy (none (0) to lots (10))", type: "choice", choices: ["0", "1", "2", "3","4", "5", "6", "7","8","9","10"], points: [1, 0.9, 0.8, 0.7,0.6,0.5,0.4,0.3,0.2,0.1,0] },
-  { name: "How many penalties (none (0) to lots (10))", type: "choice", choices: ["0", "1", "2", "3","4", "5", "6", "7","8","9","10"], points: [1, 0.9, 0.8, 0.7,0.6,0.5,0.4,0.3,0.2,0.1,0] },
-  { name: "How speedy (0 (low speed), 10 (high speed))", type: "choice", choices: ["0", "1", "2", "3","4", "5", "6", "7","8","9","10"], points: [0, .1, .2, .3,.4,.5,.6,.7,.8,.9,1] },
-  { name: "Swerve", type: "choice", choices: ["Yes", "No"], points: [1, 0] },
-  { name: "Died?", type: "choice", choices: ["Yes", "No"], points: [1, 0] },
+  { name: "How in the way of own alliance (none (0) to lots (10))", type: "choice", choices: ["0", "1", "2", "3","4", "5", "6", "7","8","9","10"], points: [0, 1, 2, 3,4,5,6,7,8,9,10] },
+  { name: "How tippy (none (0) to lots (10))", type: "choice", choices: ["0", "1", "2", "3","4", "5", "6", "7","8","9","10"], points: [0, 1, 2, 3,4,5,6,7,8,9,10] },
+  { name: "How good at defense (bad (0) to good (10))", type: "choice", choices: ["0", "1", "2", "3","4", "5", "6", "7","8","9","10"], points: [0, 1, 2, 3,4,5,6,7,8,9,10] },
+  { name: "Speed", type: "choice", choices: ["Fast", "Normal", "Slow"], points: ["Fast", "Normal", "Slow"] },
   { name: "Notes", type: "text" }];
 
 app.post('/uploadMatch', (req, res) => {
@@ -150,35 +148,11 @@ app.post('/uploadGridMatch', (req, res) => {
       uploadedDataI++;
 
     } else if (gridFields[i].type == "checkbox grid") {
-      numberOfLinks = 0;
-      numberInLine = 0;
       categoriesPointsSums = Array(gridFields[i].categoriesNames.length).fill(0);
-      for (let j = 0; j < gridFields[i].categories.length; j++) { 
-        numberInLine = 0;       
+      for (let j = 0; j < gridFields[i].categories.length; j++) {
         for (let k = 0; k < gridFields[i].categories[j].length; k++) {
           if (uploadedData[1][uploadedDataI]) {
-            if (j<gridFields[i].categories.length-1) {
-              numberInLine += 1;
-              if (numberInLine>=3) {
-                numberOfLinks+=1;
-                numberInLine = 0;
-              }
-            }
-            
             categoriesPointsSums[gridFields[i].categories[j][k]] += gridFields[i].grid[j][k];
-          } else if (j==gridFields[i].categories.length-2) {
-            if (j<gridFields[i].categories.length-1) {
-              if (uploadedData[1][uploadedDataI+9]) {
-                numberInLine += 1;
-                if (numberInLine>=3) {
-                  numberOfLinks+=1;
-                  numberInLine = 0;
-                }
-              }
-            }
-            
-          } else {
-            numberInLine = 0;
           }
           uploadedDataI++;
         }
@@ -187,8 +161,6 @@ app.post('/uploadGridMatch', (req, res) => {
       for (let j = 0; j < gridFields[i].categoriesNames.length; j++) {
         uploadedDataAsPoints.push(categoriesPointsSums[j]);
       }
-
-      uploadedDataAsPoints.push(numberOfLinks);
 
     }
     i++;
@@ -331,7 +303,6 @@ if (data == 0) {
       for (let j = 0; j < gridFields[i].categoriesNames.length; j++) {
         headers[0].push(gridFields[i].categoriesNames[j]);
       }
-      headers[0].push("Number of links");
     } else if (gridFields[i].type != "title") {
       headers[0].push(gridFields[i].name);
     }
