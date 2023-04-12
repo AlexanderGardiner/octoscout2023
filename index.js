@@ -73,10 +73,12 @@ gridFields = [
     [5, 5, 5, 5, 5, 5, 5, 5, 5]], categoriesNames: ["Cone High", "Cone Mid", "Cone Low", "Cube High", "Cube Mid", "Cube Low"]
   },
   { name: "Endgame Teleop", type: "choice", choices: ["None", "Park", "Docked", "Engaged"], points: [0, 2, 6, 10] },
-  { name: "How in the way of own alliance (none (0) to lots (10))", type: "choice", choices: ["0", "1", "2", "3","4", "5", "6", "7","8","9","10"], points: [0, 1, 2, 3,4,5,6,7,8,9,10] },
-  { name: "How tippy (none (0) to lots (10))", type: "choice", choices: ["0", "1", "2", "3","4", "5", "6", "7","8","9","10"], points: [0, 1, 2, 3,4,5,6,7,8,9,10] },
-  { name: "How good at defense (bad (0) to good (10))", type: "choice", choices: ["0", "1", "2", "3","4", "5", "6", "7","8","9","10"], points: [0, 1, 2, 3,4,5,6,7,8,9,10] },
-  { name: "Speed", type: "choice", choices: ["Fast", "Normal", "Slow"], points: ["Fast", "Normal", "Slow"] },
+  { name: "How in the way of own alliance (none (0) to lots (10))", type: "choice", choices: ["0", "1", "2", "3","4", "5", "6", "7","8","9","10"], points: [1, 0.9, 0.8, 0.7,0.6,0.5,0.4,0.3,0.2,0.1,0] },
+  { name: "How tippy (none (0) to lots (10))", type: "choice", choices: ["0", "1", "2", "3","4", "5", "6", "7","8","9","10"], points: [1, 0.9, 0.8, 0.7,0.6,0.5,0.4,0.3,0.2,0.1,0] },
+  { name: "How many penalties (none (0) to lots (10))", type: "choice", choices: ["0", "1", "2", "3","4", "5", "6", "7","8","9","10"], points: [1, 0.9, 0.8, 0.7,0.6,0.5,0.4,0.3,0.2,0.1,0] },
+  { name: "How speedy (0 (low speed), 10 (high speed))", type: "choice", choices: ["0", "1", "2", "3","4", "5", "6", "7","8","9","10"], points: [0, .1, .2, .3,.4,.5,.6,.7,.8,.9,1] },
+  { name: "Swerve", type: "choice", choices: ["Yes", "No"], points: [1, 0] },
+  { name: "Died?", type: "choice", choices: ["No", "Yes"], points: [1, 0] },
   { name: "Notes", type: "text" }];
 
 app.post('/uploadMatch', (req, res) => {
