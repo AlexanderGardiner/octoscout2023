@@ -1,10 +1,1 @@
-Team Number,Match Number,Team Color,Scout Initals,Cone High Auto,Cone Mid Auto,Cone Low Auto,Cube High Auto,Cube Mid Auto,Cube Low Auto,Mobility Auto,Balance Auto,Cones Collected,Cubes Collected,Cone High,Cone Mid,Cone Low,Cube High,Cube Mid,Cube Low,Endgame Teleop,How in the way of own alliance (none (0) to lots (10)),How tippy (none (0) to lots (10)),How many penalties (none (0) to lots (10)),How speedy (0 (low speed), 10 (high speed)),Swerve,Died?,Notes,Time Uploaded
-"","",Red,"",0,0,0,0,0,0,None,None,0,0,0,0,0,0,0,0,None,0,0,0,0,Yes,No,"",Mon Apr 10 2023 18:12:35 GMT+0000 (Coordinated Universal Time)
-"","",Red,"",1,0,1,0,1,0,None,None,0,0,0,0,0,0,0,0,None,0,0,0,0,Yes,No,"",Mon Apr 10 2023 18:33:20 GMT+0000 (Coordinated Universal Time)
-"","",Red,"",1,0,1,0,1,0,None,None,0,0,0,0,0,0,0,0,None,0,0,0,0,Yes,No,"",Mon Apr 10 2023 18:33:25 GMT+0000 (Coordinated Universal Time)
-"","",Red,"",0,0,0,0,0,0,None,None,0,0,0,0,0,0,0,0,None,0,0,0,0,Yes,No,"",Tue Apr 11 2023 18:18:11 GMT+0000 (Coordinated Universal Time)
-"","",Red,"",0,0,0,0,0,0,None,None,0,0,0,0,0,0,0,0,None,0,0,0,0,Yes,No,"",Tue Apr 11 2023 18:20:05 GMT+0000 (Coordinated Universal Time)
-"","",Red,"",0,0,0,0,0,0,None,None,0,0,0,0,0,0,0,0,None,0,0,0,0,Yes,No,"",Tue Apr 11 2023 18:21:51 GMT+0000 (Coordinated Universal Time)
-"","",Red,"",0,0,0,0,0,0,None,None,0,0,0,0,0,0,0,0,None,0,0,0,0,Yes,No,"",Tue Apr 11 2023 18:26:45 GMT+0000 (Coordinated Universal Time)
-"","",Red,"",0,0,0,0,0,0,None,None,0,0,0,0,0,0,0,0,None,0,0,0,0,Yes,No,"",Tue Apr 11 2023 18:28:13 GMT+0000 (Coordinated Universal Time)
-"","",Red,"",0,0,0,0,0,0,None,None,0,0,2,0,0,1,0,0,None,0,0,0,0,Yes,No,"",Tue Apr 11 2023 18:34:44 GMT+0000 (Coordinated Universal Time)
+Team Number,Match Number,Team Color,Scout Initals,Cone High Auto,Cone Mid Auto,Cone Low Auto,Cube High Auto,Cube Mid Auto,Cube Low Auto,Mobility Auto,Balance Auto,Cones Collected,Cubes Collected,Cone High,Cone Mid,Cone Low,Cube High,Cube Mid,Cube Low,Cone High (Full Grid),Cone Mid (Full Grid),Cone Low (Full Grid),Cube High (Full Grid),Cube Mid (Full Grid),Cube Low (Full Grid),Endgame Teleop,How in the way of own alliance (none (0) to lots (10)),How tippy (none (0) to lots (10)),How many penalties (none (0) to lots (10)),How speedy (0 (low speed), 10 (high speed)),Swerve,Died?,Notes,Time Uploaded

@@ -72,6 +72,20 @@ gridFields = [
     [2, 2, 2, 2, 2, 2, 2, 2, 2],
     [5, 5, 5, 5, 5, 5, 5, 5, 5]], categoriesNames: ["Cone High", "Cone Mid", "Cone Low", "Cube High", "Cube Mid", "Cube Low"]
   },
+  {
+    name: "Pieces Placed (Full Grid)", type: "checkbox grid", grid: [[3, 3, 3, 3, 3, 3, 3, 3, 3],
+    [3, 3, 3, 3, 3, 3, 3, 3, 3],
+    [3, 3, 3, 3, 3, 3, 3, 3, 3],
+    [3, 3, 3, 3, 3, 3, 3, 3, 3]],
+    rowNames: ["Top", "Middle", "Bottom"], colors: [["#fffb00", "#A5C0FF ", "#fffb00", "#fffb00", "#A5C0FF ", "#fffb00", "#fffb00", "#A5C0FF ", "#fffb00"],
+    ["#fffb00", "#A5C0FF ", "#fffb00", "#fffb00", "#A5C0FF ", "#fffb00", "#fffb00", "#A5C0FF ", "#fffb00"],
+    ["#fffe95", "#fffe95 ", "#fffe95", "#fffe95", "#fffe95 ", "#fffe95", "#fffe95", "#fffe95 ", "#fffe95"],
+    ["#C6D7FF", "#C6D7FF ", "#C6D7FF", "#C6D7FF", "#C6D7FF ", "#C6D7FF", "#C6D7FF", "#C6D7FF ", "#C6D7FF"]],
+    categories: [[0, 3, 0, 0, 3, 0, 0, 3, 0],
+    [1, 4, 1, 1, 4, 1, 1, 4, 1],
+    [2, 2, 2, 2, 2, 2, 2, 2, 2],
+    [5, 5, 5, 5, 5, 5, 5, 5, 5]], categoriesNames: ["Cone High (Full Grid)", "Cone Mid (Full Grid)", "Cone Low (Full Grid)", "Cube High (Full Grid)", "Cube Mid (Full Grid)", "Cube Low (Full Grid)"]
+  },
   { name: "Endgame Teleop", type: "choice", choices: ["None", "Park", "Docked", "Engaged"], points: [0, 2, 6, 10] },
   { name: "How in the way of own alliance (none (0) to lots (10))", type: "choice", choices: ["0", "1", "2", "3","4", "5", "6", "7","8","9","10"], points: [1, 0.9, 0.8, 0.7,0.6,0.5,0.4,0.3,0.2,0.1,0] },
   { name: "How tippy (none (0) to lots (10))", type: "choice", choices: ["0", "1", "2", "3","4", "5", "6", "7","8","9","10"], points: [1, 0.9, 0.8, 0.7,0.6,0.5,0.4,0.3,0.2,0.1,0] },
