@@ -240,8 +240,8 @@ app.get('/getGridFields', (req, res) => {
 });
 
 
-app.listen(80, () => {
-  console.log('App is listening on port 80');
+app.listen(8003, () => {
+  console.log('App is listening on port 8003');
 });
 
 
