@@ -3,27 +3,28 @@ viewGrid = true;
 fields = [];
 elementsNames = [];
 elements = [];
+// Create fields from config
 function initalizeFields() {
   div = document.getElementById("input");
   for (let i = 0; i < fields.length; i++) {
-
     if (fields[i].type == "text") {
+      // Create text fields
       var name = document.createElement("p");
       name.innerHTML = fields[i].name;
       div.appendChild(name);
-      
+
       elementsNames.push(fields[i].name);
       elements.push(document.createElement("input"));
       elements[i].type = "text";
       elements[i].id = fields[i].name;
       div.appendChild(elements[i]);
       div.appendChild(document.createElement("br"));
-
     } else if (fields[i].type == "increment") {
+      // Create increment fields
       var name = document.createElement("p");
       name.innerHTML = fields[i].name;
       div.appendChild(name);
-      
+
       elementsNames.push(fields[i].name);
       elements.push(document.createElement("input"));
       elements[i].type = "number";
@@ -35,20 +36,26 @@ function initalizeFields() {
       var decrementButton = document.createElement("button");
       decrementButton.innerHTML = "-";
       div.insertBefore(decrementButton, elements[i]);
-      decrementButton.setAttribute("onclick", 'decrementInput("' + fields[i].name + '")');
+      decrementButton.setAttribute(
+        "onclick",
+        'decrementInput("' + fields[i].name + '")'
+      );
 
       var incrementButton = document.createElement("button");
       incrementButton.innerHTML = "+";
       div.appendChild(incrementButton);
-      incrementButton.setAttribute("onclick", 'incrementInput("' + fields[i].name + '")');
+      incrementButton.setAttribute(
+        "onclick",
+        'incrementInput("' + fields[i].name + '")'
+      );
 
       div.appendChild(document.createElement("br"));
-
     } else if (fields[i].type == "choice") {
+      // Create multiple choice fields
       var name = document.createElement("p");
       name.innerHTML = fields[i].name;
       div.appendChild(name);
-      
+
       elementsNames.push(fields[i].name);
       elements.push(document.createElement("select"));
       elements[i].id = fields[i].name;
@@ -58,42 +65,47 @@ function initalizeFields() {
         var option = document.createElement("option");
         option.value = fields[i].choices[j];
         option.text = fields[i].choices[j];
-        elements[i].appendChild(option)
+        elements[i].appendChild(option);
       }
 
       div.appendChild(document.createElement("br"));
-
     } else if (fields[i].type == "checkbox grid") {
+      // Create checkbox grid fields
       var name = document.createElement("p");
       name.innerHTML = fields[i].name;
       div.appendChild(name);
-      
+
       elements.push([]);
       for (let j = 0; j < fields[i].grid.length; j++) {
         elements[i].push([]);
 
         for (let k = 0; k < fields[i].grid[j].length; k++) {
-          elementsNames.push(fields[i].name + ": " + fields[i].rowNames[j] + " " + k);
+          elementsNames.push(
+            fields[i].name + ": " + fields[i].rowNames[j] + " " + k
+          );
           elements[i][j].push(document.createElement("input"));
           elements[i][j][k].type = "checkbox";
-          elements[i][j][k].style.outline = "4px solid " + fields[i].colors[j][k];
-          elements[i][j][k].style.setProperty('--color', fields[i].colors[j][k]);
+          elements[i][j][k].style.outline =
+            "4px solid " + fields[i].colors[j][k];
+          elements[i][j][k].style.setProperty(
+            "--color",
+            fields[i].colors[j][k]
+          );
           div.appendChild(elements[i][j][k]);
         }
 
         div.appendChild(document.createElement("br"));
-
       }
     } else if (fields[i].type == "title") {
+      // Create title fields
       div.appendChild(document.createElement("hr"));
       elements.push(document.createElement("h2"));
       elements[i].innerHTML = fields[i].name;
       div.appendChild(elements[i]);
     }
+  }
 
-
-  } 
-
+  // Initialize buttons
   var exportButton = document.createElement("button");
   exportButton.innerHTML = "Export as CSV";
   exportButton.setAttribute("onclick", "exportFields()");
@@ -108,12 +120,17 @@ function initalizeFields() {
 
   var getScoutingDataButtonPoints = document.createElement("button");
   getScoutingDataButtonPoints.innerHTML = "Get Scouting Data (Points)";
-  getScoutingDataButtonPoints.setAttribute("onclick", "getScoutingDataAsPoints()");
+  getScoutingDataButtonPoints.setAttribute(
+    "onclick",
+    "getScoutingDataAsPoints()"
+  );
 
   var getScoutingDataButtonCount = document.createElement("button");
   getScoutingDataButtonCount.innerHTML = "Get Scouting Data (Count)";
-  getScoutingDataButtonCount.setAttribute("onclick", "getScoutingDataAsCount()");
-
+  getScoutingDataButtonCount.setAttribute(
+    "onclick",
+    "getScoutingDataAsCount()"
+  );
 
   uploadButton.style["margin-top"] = "12px";
   exportButton.style["margin-top"] = "12px";
@@ -129,14 +146,18 @@ function initalizeFields() {
   div.appendChild(getScoutingDataButtonCount);
 }
 
+// Functions for increment inputs
 function incrementInput(inputID) {
-  document.getElementById(inputID).value = parseInt(document.getElementById(inputID).value) + 1;
+  document.getElementById(inputID).value =
+    parseInt(document.getElementById(inputID).value) + 1;
 }
 
 function decrementInput(inputID) {
-  document.getElementById(inputID).value = parseInt(document.getElementById(inputID).value) - 1;
+  document.getElementById(inputID).value =
+    parseInt(document.getElementById(inputID).value) - 1;
 }
 
+// Get data to collect
 function getFieldsAndInitialize() {
   document.getElementById("ViewSelector").children[0] = true;
   fetch("/getFields", {
@@ -144,13 +165,15 @@ function getFieldsAndInitialize() {
     headers: {
       "Content-Type": "application/json",
     },
-  }).then((response) => response.json())
+  })
+    .then((response) => response.json())
     .then((data) => {
       fields = data;
       initalizeFields();
     });
 }
 
+// Get data to collect
 function getGridFieldsAndInitialize() {
   document.getElementById("ViewSelector").children[1].selected = true;
   fetch("/getGridFields", {
@@ -158,13 +181,15 @@ function getGridFieldsAndInitialize() {
     headers: {
       "Content-Type": "application/json",
     },
-  }).then((response) => response.json())
+  })
+    .then((response) => response.json())
     .then((data) => {
       fields = data;
       initalizeFields();
     });
 }
 
+// Export the data
 function exportFields() {
   elementsValues = [];
   elementsValues = getElementsValues();
@@ -172,11 +197,12 @@ function exportFields() {
   downloadCSV(csvData);
 }
 
+// Get the data
 function getElementsValues() {
   elementsValues = [];
   for (i = 0; i < elements.length; i++) {
     if (fields[i].type == "text") {
-      elementsValues.push('"'+elements[i].value+'"');
+      elementsValues.push('"' + elements[i].value + '"');
     } else if (fields[i].type == "increment") {
       elementsValues.push(elements[i].value);
     } else if (fields[i].type == "choice") {
@@ -193,19 +219,22 @@ function getElementsValues() {
   return elementsValues;
 }
 
+// Download the data as a csv
 function downloadCSV(rows) {
-  let csvContent = "data:text/csv;charset=utf-8,"
-    + rows.map(e => e.join(",")).join("\n");
+  let csvContent =
+    "data:text/csv;charset=utf-8," + rows.map((e) => e.join(",")).join("\n");
   var encodedUri = encodeURI(csvContent);
   var link = document.createElement("a");
   link.setAttribute("href", encodedUri);
-  var fileName = elements[0].value + "-" + elements[1].value + "-" + elements[3].value;
+  var fileName =
+    elements[0].value + "-" + elements[1].value + "-" + elements[3].value;
   link.setAttribute("download", fileName);
   div.appendChild(link);
 
   link.click();
 }
 
+// Upload the data
 function uploadMatch() {
   uploadPath = "/uploadMatch";
   if (viewGrid) {
@@ -221,37 +250,32 @@ function uploadMatch() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(jsonData),
-  }).then(response => {
+  }).then((response) => {
     if (response.status == 200) {
       console.log("Match Uploaded");
       alert("Match Uploaded");
     } else {
       alert("Upload Failed");
     }
-  })
-
+  });
 }
 
-
+// Clear the data
 function clearData() {
-  document.getElementById("input").innerHTML = '';
+  document.getElementById("input").innerHTML = "";
   elements.length = 0;
-  
-
 }
 
 function clearView() {
   if (confirm("Clear fields?")) {
-    document.getElementById("input").innerHTML = '';
+    document.getElementById("input").innerHTML = "";
     elements.length = 0;
     viewGrid = true;
     getGridFieldsAndInitialize();
   }
-  
-
 }
 
-
+// Delete data
 function updateView() {
   clearData();
   viewGrid = true;
@@ -269,6 +293,7 @@ function updateView() {
   // }
 }
 
+// Get the data
 function getScoutingDataAsPoints() {
   window.location.href = "/dataAsPoints.csv";
 }
@@ -276,7 +301,6 @@ function getScoutingDataAsPoints() {
 function getScoutingDataAsCount() {
   window.location.href = "/dataAsCount.csv";
 }
-
 
 viewGrid = true;
 getGridFieldsAndInitialize();
@@ -294,14 +318,14 @@ getGridFieldsAndInitialize();
 //   getGridFieldsAndInitialize();
 // }
 
-
+// Get cookies
 function getCookie(cookieName) {
   let cookieAndEqualsSign = cookieName + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
-  let cookies = decodedCookie.split(';');
+  let cookies = decodedCookie.split(";");
   for (let i = 0; i < cookies.length; i++) {
     let cookie = cookies[i];
-    while (cookie.charAt(0) == ' ') {
+    while (cookie.charAt(0) == " ") {
       cookie = cookie.substring(1);
     }
     if (cookie.indexOf(name) == 0) {
