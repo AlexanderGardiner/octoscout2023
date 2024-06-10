@@ -3,6 +3,7 @@ const path = require("path");
 const app = express();
 const fs = require("fs");
 const bodyParser = require("body-parser");
+const port = process.env.PORT || 3005;
 app.use(
   bodyParser.urlencoded({
     extended: true,
@@ -477,8 +478,8 @@ app.get("/getGridFields", (req, res) => {
   res.json(gridFields);
 });
 
-app.listen(3000, () => {
-  console.log("App is listening on port 3000");
+app.listen(port, () => {
+  console.log("App is listening on port " + port);
 });
 
 // Read csv and format functions
