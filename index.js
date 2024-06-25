@@ -333,7 +333,7 @@ gridFields = [
 ];
 
 // Upload a match
-app.post("/uploadMatch", (req, res) => {
+app.post("/octoscout2023/uploadMatch", (req, res) => {
   uploadedData = req.body.data;
 
   // Write data to count csv
@@ -367,7 +367,7 @@ app.post("/uploadMatch", (req, res) => {
   res.sendStatus(200);
 });
 
-app.post("/uploadGridMatch", (req, res) => {
+app.post("/octoscout2023/uploadGridMatch", (req, res) => {
   uploadedData = req.body.data;
 
   // Write data to grid csv
@@ -470,11 +470,11 @@ app.post("/uploadGridMatch", (req, res) => {
 });
 
 // Requests for scouting format
-app.get("/getFields", (req, res) => {
+app.get("/octoscout2023/getFields", (req, res) => {
   res.json(fields);
 });
 
-app.get("/getGridFields", (req, res) => {
+app.get("/octoscout2023/getGridFields", (req, res) => {
   res.json(gridFields);
 });
 

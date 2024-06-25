@@ -160,7 +160,7 @@ function decrementInput(inputID) {
 // Get data to collect
 function getFieldsAndInitialize() {
   document.getElementById("ViewSelector").children[0] = true;
-  fetch("/getFields", {
+  fetch("getFields", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -176,7 +176,7 @@ function getFieldsAndInitialize() {
 // Get data to collect
 function getGridFieldsAndInitialize() {
   document.getElementById("ViewSelector").children[1].selected = true;
-  fetch("/getGridFields", {
+  fetch("getGridFields", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -236,9 +236,9 @@ function downloadCSV(rows) {
 
 // Upload the data
 function uploadMatch() {
-  uploadPath = "/uploadMatch";
+  uploadPath = "uploadMatch";
   if (viewGrid) {
-    uploadPath = "/uploadGridMatch";
+    uploadPath = "uploadGridMatch";
   }
   elementsValues = [];
   elementsValues = getElementsValues();
