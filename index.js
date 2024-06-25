@@ -10,7 +10,7 @@ app.use(
   })
 );
 app.use(bodyParser.json());
-app.use(express.static("public"));
+app.use("/octoscout2023", express.static(path.join(__dirname, "public")));
 
 // Defining what data to collect
 fields = [
